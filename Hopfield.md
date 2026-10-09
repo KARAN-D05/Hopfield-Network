@@ -138,3 +138,27 @@ The rule has three cases:
 For example, if a neuron has current state \(+1\) and total input \(-5\), its new state becomes \(-1\). If its total input is zero, it remains in state \(+1\).
 
 The neuron update rule converts the weighted sum of its inputs into a binary decision.
+
+## 🎯 Network Convergence
+A Hopfield Network evolves through repeated neuron-state updates. During each update, a neuron calculates its total input and applies the update rule to determine its next state.
+
+When a neuron changes its state, the contributions it makes to connected neurons can also change. This may influence their subsequent updates, allowing changes to propagate through the network.
+
+For example, consider a four-neuron network with the initial state:
+
+$$
+\mathbf{s}=[+1,-1,+1,-1]
+$$
+
+If the second neuron's state changes from \(-1\) to \(+1\), the network becomes:
+
+$$
+\mathbf{s}=[+1,+1,+1,-1]
+$$
+
+Although only one neuron was updated, the overall network state has changed.
+
+### Stable states
+
+A network has reached a stable state when applying its update procedure no longer changes its state.
+A stable state does not necessarily correspond to an intended stored pattern. The network may instead settle into another stable configuration.
