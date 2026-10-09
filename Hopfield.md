@@ -33,4 +33,35 @@ This vector represents the current state of all four neurons, not four separate 
 
 The network's state may change as neurons are updated according to the network's weights and update rules. A state is stable when applying the update rules no longer changes it.
 
-**Key distinction:** Stored patterns are encoded in the network's weights, whereas the state vector represents the neurons' current values during operation.
+## 🔗 Connection Weights
+In a Hopfield Network, each connection between neurons has an associated weight. The weight determines how strongly, and in what direction, one neuron's state contributes to another neuron's input.
+
+For a connection from neuron \(i\) to neuron \(j\), the contribution is:
+
+$$
+h_j^{(i)}=w_{ji}s_i
+$$
+
+where:
+
+* \(s_i\) is the current state of neuron \(i\).
+* \(w_{ji}\) is the connection weight.
+* \(h_j^{(i)}\) is the contribution of neuron \(i\) to neuron \(j\).
+
+For example, if \(w_{21}=-3\) and \(s_1=+1\), then:
+
+$$
+h_2^{(1)}=(-3)(+1)=-3
+$$
+
+This negative contribution favors neuron \(2\) taking the state \(-1\), all else being equal.
+
+In general:
+
+* A positive weight favors connected neurons having the same state.
+* A negative weight favors connected neurons having opposite states.
+* A zero weight contributes nothing through that connection.
+
+These interpretations follow from how connection contributions influence the neuron's update calculation. A single connection does not necessarily determine the neuron's next state because other connections may contribute as well.
+
+The neuron's next state is determined by combining the contributions from its connections and applying the update rule.
