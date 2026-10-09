@@ -310,3 +310,20 @@ h_2=2+0+3=\boxed{+5}
 $$
 
 The positive input favors Neuron 2 taking state \(+1\).
+
+## 📅 Neuron Update Scheduling
+A Hopfield Network can update its neurons asynchronously or synchronously.
+
+### Asynchronous updating
+In asynchronous updating, one neuron is updated at a time.
+The selected neuron calculates its total input using the current network state and applies the update rule. Its new state becomes part of the network state used by subsequent updates.
+
+For example, if Neuron 1 is updated before Neuron 2, Neuron 2 uses Neuron 1's updated state when calculating its own next state.
+For a classical Hopfield Network with symmetric weights and zero self-connections, asynchronous updates provide an energy-based convergence guarantee.
+
+### Synchronous updating
+In synchronous updating, every neuron calculates its next state using the same snapshot of the current network state.
+The new states are collected and applied together after all calculations are complete.
+
+Consequently, Neuron 2 uses Neuron 1's old state when calculating its next state during the same synchronous update.
+Unlike asynchronous updating, synchronous updating does not guarantee convergence to a stable state, even with symmetric weights and zero self-connections. Oscillations can occur.
