@@ -65,3 +65,50 @@ In general:
 These interpretations follow from how connection contributions influence the neuron's update calculation. A single connection does not necessarily determine the neuron's next state because other connections may contribute as well.
 
 The neuron's next state is determined by combining the contributions from its connections and applying the update rule.
+
+## 3. Connection Weights
+
+In a Hopfield Network, each connection between neurons has an associated weight. The weight determines how strongly, and in what direction, one neuron's state contributes to another neuron's input.
+
+For a connection from neuron `i` to neuron `j`, the contribution is:
+
+```text
+h_j^(i) = w_ji * s_i
+```
+
+Where:
+
+* `s_i` is the current state of neuron `i`.
+* `w_ji` is the connection weight from neuron `i` to neuron `j`.
+* `h_j^(i)` is the contribution of neuron `i` to neuron `j`.
+
+For example, suppose:
+
+```text
+w_21 = -3
+s_1  = +1
+```
+
+The contribution is:
+
+```text
+h_2^(1) = w_21 * s_1
+        = (-3) * (+1)
+        = -3
+```
+
+This negative contribution favors neuron `2` taking the state `-1`, all else being equal.
+
+### Interpreting Connection Weights
+
+* **Positive weight:** Favors connected neurons having the same state.
+* **Negative weight:** Favors connected neurons having opposite states.
+* **Zero weight:** The connection contributes nothing to the receiving neuron's input.
+
+These interpretations follow from how connection contributions influence the neuron's update calculation.
+
+A single connection does not necessarily determine the neuron's next state because other connections may contribute as well.
+
+### Key Takeaway
+
+Weights determine how neurons influence one another, but the next state of a neuron depends on the combined contributions from its connections and the update rule applied to that total input.
