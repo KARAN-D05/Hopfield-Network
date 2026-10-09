@@ -65,3 +65,48 @@ These interpretations follow from how connection contributions influence the neu
 
 The neuron's next state is determined by combining the contributions from its connections and applying the update rule.
 
+## ∑ Total Input to a Neuron
+A neuron in a Hopfield Network typically receives contributions from multiple connected neurons. To determine the overall influence on a neuron, we sum the contributions from all neurons.
+
+For neuron \(j\), the total input is:
+
+$$
+h_j=\sum_{i=1}^{N}w_{ji}s_i
+$$
+
+where:
+
+* \(N\) is the number of neurons in the network.
+* wⱼᵢ is the weight connecting neuron \(i\) to neuron \(j\).
+* sᵢ is the current state of neuron \(i\).
+* hⱼ is the total input received by neuron \(j\).
+
+For example, consider a neuron receiving inputs from two neurons:
+
+$$
+w_{31}=+4,\quad s_1=-1
+$$
+
+$$
+w_{32}=-2,\quad s_2=-1
+$$
+
+The individual contributions are:
+
+$$
+h_3^{(1)}=(+4)(-1)=-4
+$$
+
+$$
+h_3^{(2)}=(-2)(-1)=+2
+$$
+
+Therefore, the total input is:
+
+$$
+h_3=-4+2=-2
+$$
+
+The total input combines the influences of all connected neurons into a single value. Its sign and magnitude depend on the contributions and their relative strengths.
+
+**Important:** The total input is not the neuron's state. The neuron applies an update rule to determine its next state from this input.
