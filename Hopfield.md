@@ -109,4 +109,32 @@ $$
 
 The total input combines the influences of all connected neurons into a single value. Its sign and magnitude depend on the contributions and their relative strengths.
 
-**Important:** The total input is not the neuron's state. The neuron applies an update rule to determine its next state from this input.
+## 🧬 Neuron Update Rule
+After calculating its total input, a neuron applies an update rule to determine its next state.
+
+For neuron \(j\), the total input is:
+
+$$
+h_j=\sum_{i=1}^{N}w_{ji}s_i
+$$
+
+We use the following update rule for our initial implementation:
+
+$$
+s_j^{new}=
+\begin{cases}
++1 & \text{if } h_j>0\\
+-1 & \text{if } h_j<0\\
+s_j^{old} & \text{if } h_j=0
+\end{cases}
+$$
+
+The rule has three cases:
+
+* **Positive input:** The neuron takes state \(+1\).
+* **Negative input:** The neuron takes state \(-1\).
+* **Zero input:** The neuron retains its current state.
+
+For example, if a neuron has current state \(+1\) and total input \(-5\), its new state becomes \(-1\). If its total input is zero, it remains in state \(+1\).
+
+The neuron update rule converts the weighted sum of its inputs into a binary decision.
