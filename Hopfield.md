@@ -174,7 +174,7 @@ $$
 w_{ij}=x_i x_j,\qquad i\ne j
 $$
 
-where \(x_i\) and \(x_j\) are the states of neurons \(i\) and \(j\) in the pattern.
+where xᵢ and $$x_j$$ are the states of neurons \(i\) and \(j\) in the pattern.
 
 For example, consider:
 
