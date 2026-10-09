@@ -162,3 +162,74 @@ Although only one neuron was updated, the overall network state has changed.
 
 A network has reached a stable state when applying its update procedure no longer changes its state.
 A stable state does not necessarily correspond to an intended stored pattern. The network may instead settle into another stable configuration.
+
+## 🧮 Storing Patterns in Weights
+A Hopfield Network stores patterns by encoding relationships between neurons in its connection weights.
+
+For a bipolar pattern, where each neuron has state \(+1\) or \(-1\), we can use the classical Hebbian learning rule to calculate the weights.
+
+For a single pattern:
+
+$$
+w_{ij}=x_i x_j,\qquad i\ne j
+$$
+
+where \(x_i\) and \(x_j\) are the states of neurons \(i\) and \(j\) in the pattern.
+
+For example, consider:
+
+$$
+\mathbf{x}=[+1,-1,+1]
+$$
+
+The weight between Neurons 1 and 2 is:
+
+$$
+w_{12}=(+1)(-1)=-1
+$$
+
+The weight between Neurons 1 and 3 is:
+
+$$
+w_{13}=(+1)(+1)=+1
+$$
+
+For multiple stored patterns, the Hebbian rule adds their contributions:
+
+$$
+w_{ij}=\sum_{p=1}^{P}x_i^{(p)}x_j^{(p)},\qquad i\ne j
+$$
+
+where \(P\) is the number of stored patterns.
+
+For example, consider two patterns:
+
+$$
+\mathbf{x}^{(1)}=[+1,-1,+1]
+$$
+
+$$
+\mathbf{x}^{(2)}=[+1,+1,-1]
+$$
+
+The weight between Neurons 1 and 2 becomes:
+
+$$
+w_{12}=(-1)+(+1)=0
+$$
+
+The contributions cancel each other.
+
+The weight between Neurons 2 and 3 becomes:
+
+$$
+w_{23}=(-1)+(-1)=-2
+$$
+
+The contributions reinforce each other.
+
+We also impose zero self-connections:
+
+$$
+w_{ii}=0
+$$
