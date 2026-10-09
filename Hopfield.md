@@ -96,6 +96,7 @@ h_3^{(2)}=(-2)(-1)=+2
 $$
 
 Therefore, the total input is:
+
 $$
 h_3=-4+2=-2
 $$
@@ -136,11 +137,13 @@ A Hopfield Network evolves through repeated neuron-state updates. During each up
 When a neuron changes its state, the contributions it makes to connected neurons can also change. This may influence their subsequent updates, allowing changes to propagate through the network.
 
 For example, consider a four-neuron network with the initial state:
+
 $$
 \mathbf{s}=[+1,-1,+1,-1]
 $$
 
 If the second neuron's state changes from \(-1\) to \(+1\), the network becomes:
+
 $$
 \mathbf{s}=[+1,+1,+1,-1]
 $$
@@ -155,6 +158,7 @@ A Hopfield Network stores patterns by encoding relationships between neurons in 
 For a bipolar pattern, where each neuron has state \(+1\) or \(-1\), we can use the classical Hebbian learning rule to calculate the weights.
 
 For a single pattern:
+
 $$
 w_{ij}=x_i x_j,\qquad i\ne j
 $$
@@ -162,21 +166,25 @@ $$
 where xᵢ and $$x_j$$ are the states of neurons \(i\) and \(j\) in the pattern.
 
 For example, consider:
+
 $$
 \mathbf{x}=[+1,-1,+1]
 $$
 
 The weight between Neurons 1 and 2 is:
+
 $$
 w_{12}=(+1)(-1)=-1
 $$
 
 The weight between Neurons 1 and 3 is:
+
 $$
 w_{13}=(+1)(+1)=+1
 $$
 
 For multiple stored patterns, the Hebbian rule adds their contributions:
+
 $$
 w_{ij}=\sum_{p=1}^{P}x_i^{(p)}x_j^{(p)},\qquad i\ne j
 $$
@@ -184,6 +192,7 @@ $$
 where \(P\) is the number of stored patterns.
 
 For example, consider two patterns:
+
 $$
 \mathbf{x}^{(1)}=[+1,-1,+1]
 $$
@@ -192,6 +201,7 @@ $$
 $$
 
 The weight between Neurons 1 and 2 becomes:
+
 $$
 w_{12}=(-1)+(+1)=0
 $$
@@ -199,6 +209,7 @@ $$
 The contributions cancel each other.
 
 The weight between Neurons 2 and 3 becomes:
+
 $$
 w_{23}=(-1)+(-1)=-2
 $$
