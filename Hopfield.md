@@ -21,7 +21,7 @@ $$
 \mathbf{s} = [s_1,s_2,\ldots,s_N]
 $$
 
-where each \(s_i \in \{-1,+1\}\) represents the current state of neuron \(i\).
+where each sᵢ ∈ {−1, +1} represents the current state of neuron \(i\).
 
 For example, a four-neuron network might have the state:
 
