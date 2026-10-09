@@ -217,6 +217,96 @@ $$
 The contributions reinforce each other.
 
 We also impose zero self-connections:
+
 $$
 w_{ii}=0
 $$
+
+## ▦ Weight Matrix
+A Hopfield Network's connection weights can be organized into a matrix \(W\). Each entry $$\(w_{ij}\)$$ represents the weight connecting neurons \(i\) and \(j\).
+
+For a three-neuron network storing the bipolar pattern
+
+$$
+\mathbf{x}=[+1,-1,+1]
+$$
+
+the Hebbian rule gives the following weight matrix:
+
+$$
+W=
+\begin{bmatrix}
+0 & -1 & +1\\
+-1 & 0 & -1\\
++1 & -1 & 0
+\end{bmatrix}
+$$
+
+### Important properties
+
+**1. Symmetric weights**
+
+The weights satisfy
+
+$$
+w_{ij}=w_{ji}
+$$
+
+or, equivalently,
+
+$$
+W=W^T
+$$
+
+Symmetry is an important condition for the classical Hopfield Network's energy-based convergence guarantee under asynchronous updates.
+
+**2. Zero diagonal**
+
+The network has no self-connections:
+
+$$
+w_{ii}=0
+$$
+
+This means a neuron does not contribute to its own total input through a self-connection.
+
+### Calculating a neuron's total input
+
+The total input to neuron \(j\) is
+
+$$
+h_j=\sum_{i=1}^{N}w_{ji}s_i
+$$
+
+For example, consider
+
+$$
+W=
+\begin{bmatrix}
+0 & +2 & -1\\
++2 & 0 & +3\\
+-1 & +3 & 0
+\end{bmatrix},
+\qquad
+\mathbf{s}=[+1,-1,+1]
+$$
+
+The input to Neuron 2 is
+
+$$
+h_2=w_{21}s_1+w_{22}s_2+w_{23}s_3
+$$
+
+Substituting the values:
+
+$$
+h_2=(+2)(+1)+(0)(-1)+(+3)(+1)
+$$
+
+Therefore,
+
+$$
+h_2=2+0+3=\boxed{+5}
+$$
+
+The positive input favors Neuron 2 taking state \(+1\).
