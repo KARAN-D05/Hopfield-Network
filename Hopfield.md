@@ -30,7 +30,6 @@ $$
 $$
 
 This vector represents the current state of all four neurons, not four separate stored patterns.
-
 The network's state may change as neurons are updated according to the network's weights and update rules. A state is stable when applying the update rules no longer changes it.
 
 ## 🔗 Connection Weights
@@ -43,7 +42,6 @@ h_j^{(i)}=w_{ji}s_i
 $$
 
 where:
-
 - sᵢ is the current state of neuron i.
 - wⱼᵢ is the connection weight.
 - hⱼ⁽ⁱ⁾ is the contribution of neuron i to neuron j.
@@ -56,13 +54,11 @@ $$
 This negative contribution favors neuron \(2\) taking the state \(-1\), all else being equal.
 
 In general:
-
 * A positive weight favors connected neurons having the same state.
 * A negative weight favors connected neurons having opposite states.
 * A zero weight contributes nothing through that connection.
 
 These interpretations follow from how connection contributions influence the neuron's update calculation. A single connection does not necessarily determine the neuron's next state because other connections may contribute as well.
-
 The neuron's next state is determined by combining the contributions from its connections and applying the update rule.
 
 ## ∑ Total Input to a Neuron
@@ -86,7 +82,6 @@ For example, consider a neuron receiving inputs from two neurons:
 $$
 w_{31}=+4,\quad s_1=-1
 $$
-
 $$
 w_{32}=-2,\quad s_2=-1
 $$
@@ -96,13 +91,11 @@ The individual contributions are:
 $$
 h_3^{(1)}=(+4)(-1)=-4
 $$
-
 $$
 h_3^{(2)}=(-2)(-1)=+2
 $$
 
 Therefore, the total input is:
-
 $$
 h_3=-4+2=-2
 $$
@@ -136,40 +129,32 @@ The rule has three cases:
 * **Zero input:** The neuron retains its current state.
 
 For example, if a neuron has current state \(+1\) and total input \(-5\), its new state becomes \(-1\). If its total input is zero, it remains in state \(+1\).
-
 The neuron update rule converts the weighted sum of its inputs into a binary decision.
 
 ## 🎯 Network Convergence
 A Hopfield Network evolves through repeated neuron-state updates. During each update, a neuron calculates its total input and applies the update rule to determine its next state.
-
 When a neuron changes its state, the contributions it makes to connected neurons can also change. This may influence their subsequent updates, allowing changes to propagate through the network.
 
 For example, consider a four-neuron network with the initial state:
-
 $$
 \mathbf{s}=[+1,-1,+1,-1]
 $$
 
 If the second neuron's state changes from \(-1\) to \(+1\), the network becomes:
-
 $$
 \mathbf{s}=[+1,+1,+1,-1]
 $$
 
 Although only one neuron was updated, the overall network state has changed.
 
-### Stable states
-
 A network has reached a stable state when applying its update procedure no longer changes its state.
 A stable state does not necessarily correspond to an intended stored pattern. The network may instead settle into another stable configuration.
 
 ## 🧮 Storing Patterns in Weights
 A Hopfield Network stores patterns by encoding relationships between neurons in its connection weights.
-
 For a bipolar pattern, where each neuron has state \(+1\) or \(-1\), we can use the classical Hebbian learning rule to calculate the weights.
 
 For a single pattern:
-
 $$
 w_{ij}=x_i x_j,\qquad i\ne j
 $$
@@ -177,25 +162,21 @@ $$
 where xᵢ and $$x_j$$ are the states of neurons \(i\) and \(j\) in the pattern.
 
 For example, consider:
-
 $$
 \mathbf{x}=[+1,-1,+1]
 $$
 
 The weight between Neurons 1 and 2 is:
-
 $$
 w_{12}=(+1)(-1)=-1
 $$
 
 The weight between Neurons 1 and 3 is:
-
 $$
 w_{13}=(+1)(+1)=+1
 $$
 
 For multiple stored patterns, the Hebbian rule adds their contributions:
-
 $$
 w_{ij}=\sum_{p=1}^{P}x_i^{(p)}x_j^{(p)},\qquad i\ne j
 $$
@@ -203,17 +184,14 @@ $$
 where \(P\) is the number of stored patterns.
 
 For example, consider two patterns:
-
 $$
 \mathbf{x}^{(1)}=[+1,-1,+1]
 $$
-
 $$
 \mathbf{x}^{(2)}=[+1,+1,-1]
 $$
 
 The weight between Neurons 1 and 2 becomes:
-
 $$
 w_{12}=(-1)+(+1)=0
 $$
@@ -221,7 +199,6 @@ $$
 The contributions cancel each other.
 
 The weight between Neurons 2 and 3 becomes:
-
 $$
 w_{23}=(-1)+(-1)=-2
 $$
@@ -229,7 +206,6 @@ $$
 The contributions reinforce each other.
 
 We also impose zero self-connections:
-
 $$
 w_{ii}=0
 $$
