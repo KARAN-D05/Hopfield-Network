@@ -4,6 +4,8 @@ A Hopfield network functions as an associative memory, recovering stored pattern
 
 Unlike conventional memory systems, which retrieve data using an explicit address, associative memory recalls information from the content of an input pattern. When presented with a sufficiently similar pattern, the network can recover the stored configuration through interactions between its interconnected neurons.
 
+[Hopfield Network Fundamentals](Hopfield.md)
+
 ## 🧠 Associative Recall
 
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
@@ -20,7 +22,7 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
 
 ## ⚙️ Implementation
 
-- **Hebbian Weight Matrix:** A predefined symmetric weight matrix with zero diagonal entries.
+- **Hebbian Weight Matrix:** A predefined symmetric weight matrix with zero diagonal entries.[Hebbian Matrix Generator](Hebbian.py)
 - **Bipolar Neurons:** Binary `1` represents `+1`, while binary `0` represents `−1`.
 - **Sequential Updates:** Neurons are updated individually according to their weighted inputs.
 - **Convergence Detection:** The network stops when a complete pass produces no state changes.
@@ -36,12 +38,6 @@ The implementation has been tested through both RTL simulation and gate-level si
 | Gate-level simulation | 20/20 tests passed |
 
 All 20 selected test inputs converged to the expected stored pattern. These results demonstrate successful recall for the tested cases, rather than guaranteeing recall for every possible input.
-
-## 📚 Documentation
-
-- [Hopfield Network Fundamentals](Hopfield.md) 
-- [Hebbian Matrix Generator](Hebbian.py)
-- [Source Files](src)
 
 ## 📜 License
 
