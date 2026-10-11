@@ -1,722 +1,159 @@
-module hopfield_network #(
-    parameter int N = 25,
-    parameter int MAX_PASSES = 16
-) (
-    input  logic         clk,
-    input  logic         rst_n,
-    input  logic         start,
-    input  logic [N-1:0] initial_state,
-    output logic [N-1:0] final_state,
-    output logic         busy,
-    output logic         done,
-    output logic         converged
-);
+`timescale 1ns/1ns
+`include "Hopfield.sv"
 
-    logic signed [7:0] weights [0:N-1][0:N-1];
+module testbench;
 
-    assign weights[0][0] = 8'sd0;
-    assign weights[0][1] = -8'sd1;
-    assign weights[0][2] = 8'sd1;
-    assign weights[0][3] = 8'sd1;
-    assign weights[0][4] = -8'sd1;
-    assign weights[0][5] = 8'sd1;
-    assign weights[0][6] = -8'sd1;
-    assign weights[0][7] = 8'sd1;
-    assign weights[0][8] = -8'sd1;
-    assign weights[0][9] = 8'sd1;
-    assign weights[0][10] = 8'sd1;
-    assign weights[0][11] = -8'sd1;
-    assign weights[0][12] = -8'sd1;
-    assign weights[0][13] = 8'sd1;
-    assign weights[0][14] = 8'sd1;
-    assign weights[0][15] = 8'sd1;
-    assign weights[0][16] = -8'sd1;
-    assign weights[0][17] = 8'sd1;
-    assign weights[0][18] = -8'sd1;
-    assign weights[0][19] = 8'sd1;
-    assign weights[0][20] = 8'sd1;
-    assign weights[0][21] = -8'sd1;
-    assign weights[0][22] = 8'sd1;
-    assign weights[0][23] = 8'sd1;
-    assign weights[0][24] = -8'sd1;
-    assign weights[1][0] = -8'sd1;
-    assign weights[1][1] = 8'sd0;
-    assign weights[1][2] = -8'sd1;
-    assign weights[1][3] = -8'sd1;
-    assign weights[1][4] = 8'sd1;
-    assign weights[1][5] = -8'sd1;
-    assign weights[1][6] = 8'sd1;
-    assign weights[1][7] = -8'sd1;
-    assign weights[1][8] = 8'sd1;
-    assign weights[1][9] = -8'sd1;
-    assign weights[1][10] = -8'sd1;
-    assign weights[1][11] = 8'sd1;
-    assign weights[1][12] = 8'sd1;
-    assign weights[1][13] = -8'sd1;
-    assign weights[1][14] = -8'sd1;
-    assign weights[1][15] = -8'sd1;
-    assign weights[1][16] = 8'sd1;
-    assign weights[1][17] = -8'sd1;
-    assign weights[1][18] = 8'sd1;
-    assign weights[1][19] = -8'sd1;
-    assign weights[1][20] = -8'sd1;
-    assign weights[1][21] = 8'sd1;
-    assign weights[1][22] = -8'sd1;
-    assign weights[1][23] = -8'sd1;
-    assign weights[1][24] = 8'sd1;
-    assign weights[2][0] = 8'sd1;
-    assign weights[2][1] = -8'sd1;
-    assign weights[2][2] = 8'sd0;
-    assign weights[2][3] = 8'sd1;
-    assign weights[2][4] = -8'sd1;
-    assign weights[2][5] = 8'sd1;
-    assign weights[2][6] = -8'sd1;
-    assign weights[2][7] = 8'sd1;
-    assign weights[2][8] = -8'sd1;
-    assign weights[2][9] = 8'sd1;
-    assign weights[2][10] = 8'sd1;
-    assign weights[2][11] = -8'sd1;
-    assign weights[2][12] = -8'sd1;
-    assign weights[2][13] = 8'sd1;
-    assign weights[2][14] = 8'sd1;
-    assign weights[2][15] = 8'sd1;
-    assign weights[2][16] = -8'sd1;
-    assign weights[2][17] = 8'sd1;
-    assign weights[2][18] = -8'sd1;
-    assign weights[2][19] = 8'sd1;
-    assign weights[2][20] = 8'sd1;
-    assign weights[2][21] = -8'sd1;
-    assign weights[2][22] = 8'sd1;
-    assign weights[2][23] = 8'sd1;
-    assign weights[2][24] = -8'sd1;
-    assign weights[3][0] = 8'sd1;
-    assign weights[3][1] = -8'sd1;
-    assign weights[3][2] = 8'sd1;
-    assign weights[3][3] = 8'sd0;
-    assign weights[3][4] = -8'sd1;
-    assign weights[3][5] = 8'sd1;
-    assign weights[3][6] = -8'sd1;
-    assign weights[3][7] = 8'sd1;
-    assign weights[3][8] = -8'sd1;
-    assign weights[3][9] = 8'sd1;
-    assign weights[3][10] = 8'sd1;
-    assign weights[3][11] = -8'sd1;
-    assign weights[3][12] = -8'sd1;
-    assign weights[3][13] = 8'sd1;
-    assign weights[3][14] = 8'sd1;
-    assign weights[3][15] = 8'sd1;
-    assign weights[3][16] = -8'sd1;
-    assign weights[3][17] = 8'sd1;
-    assign weights[3][18] = -8'sd1;
-    assign weights[3][19] = 8'sd1;
-    assign weights[3][20] = 8'sd1;
-    assign weights[3][21] = -8'sd1;
-    assign weights[3][22] = 8'sd1;
-    assign weights[3][23] = 8'sd1;
-    assign weights[3][24] = -8'sd1;
-    assign weights[4][0] = -8'sd1;
-    assign weights[4][1] = 8'sd1;
-    assign weights[4][2] = -8'sd1;
-    assign weights[4][3] = -8'sd1;
-    assign weights[4][4] = 8'sd0;
-    assign weights[4][5] = -8'sd1;
-    assign weights[4][6] = 8'sd1;
-    assign weights[4][7] = -8'sd1;
-    assign weights[4][8] = 8'sd1;
-    assign weights[4][9] = -8'sd1;
-    assign weights[4][10] = -8'sd1;
-    assign weights[4][11] = 8'sd1;
-    assign weights[4][12] = 8'sd1;
-    assign weights[4][13] = -8'sd1;
-    assign weights[4][14] = -8'sd1;
-    assign weights[4][15] = -8'sd1;
-    assign weights[4][16] = 8'sd1;
-    assign weights[4][17] = -8'sd1;
-    assign weights[4][18] = 8'sd1;
-    assign weights[4][19] = -8'sd1;
-    assign weights[4][20] = -8'sd1;
-    assign weights[4][21] = 8'sd1;
-    assign weights[4][22] = -8'sd1;
-    assign weights[4][23] = -8'sd1;
-    assign weights[4][24] = 8'sd1;
-    assign weights[5][0] = 8'sd1;
-    assign weights[5][1] = -8'sd1;
-    assign weights[5][2] = 8'sd1;
-    assign weights[5][3] = 8'sd1;
-    assign weights[5][4] = -8'sd1;
-    assign weights[5][5] = 8'sd0;
-    assign weights[5][6] = -8'sd1;
-    assign weights[5][7] = 8'sd1;
-    assign weights[5][8] = -8'sd1;
-    assign weights[5][9] = 8'sd1;
-    assign weights[5][10] = 8'sd1;
-    assign weights[5][11] = -8'sd1;
-    assign weights[5][12] = -8'sd1;
-    assign weights[5][13] = 8'sd1;
-    assign weights[5][14] = 8'sd1;
-    assign weights[5][15] = 8'sd1;
-    assign weights[5][16] = -8'sd1;
-    assign weights[5][17] = 8'sd1;
-    assign weights[5][18] = -8'sd1;
-    assign weights[5][19] = 8'sd1;
-    assign weights[5][20] = 8'sd1;
-    assign weights[5][21] = -8'sd1;
-    assign weights[5][22] = 8'sd1;
-    assign weights[5][23] = 8'sd1;
-    assign weights[5][24] = -8'sd1;
-    assign weights[6][0] = -8'sd1;
-    assign weights[6][1] = 8'sd1;
-    assign weights[6][2] = -8'sd1;
-    assign weights[6][3] = -8'sd1;
-    assign weights[6][4] = 8'sd1;
-    assign weights[6][5] = -8'sd1;
-    assign weights[6][6] = 8'sd0;
-    assign weights[6][7] = -8'sd1;
-    assign weights[6][8] = 8'sd1;
-    assign weights[6][9] = -8'sd1;
-    assign weights[6][10] = -8'sd1;
-    assign weights[6][11] = 8'sd1;
-    assign weights[6][12] = 8'sd1;
-    assign weights[6][13] = -8'sd1;
-    assign weights[6][14] = -8'sd1;
-    assign weights[6][15] = -8'sd1;
-    assign weights[6][16] = 8'sd1;
-    assign weights[6][17] = -8'sd1;
-    assign weights[6][18] = 8'sd1;
-    assign weights[6][19] = -8'sd1;
-    assign weights[6][20] = -8'sd1;
-    assign weights[6][21] = 8'sd1;
-    assign weights[6][22] = -8'sd1;
-    assign weights[6][23] = -8'sd1;
-    assign weights[6][24] = 8'sd1;
-    assign weights[7][0] = 8'sd1;
-    assign weights[7][1] = -8'sd1;
-    assign weights[7][2] = 8'sd1;
-    assign weights[7][3] = 8'sd1;
-    assign weights[7][4] = -8'sd1;
-    assign weights[7][5] = 8'sd1;
-    assign weights[7][6] = -8'sd1;
-    assign weights[7][7] = 8'sd0;
-    assign weights[7][8] = -8'sd1;
-    assign weights[7][9] = 8'sd1;
-    assign weights[7][10] = 8'sd1;
-    assign weights[7][11] = -8'sd1;
-    assign weights[7][12] = -8'sd1;
-    assign weights[7][13] = 8'sd1;
-    assign weights[7][14] = 8'sd1;
-    assign weights[7][15] = 8'sd1;
-    assign weights[7][16] = -8'sd1;
-    assign weights[7][17] = 8'sd1;
-    assign weights[7][18] = -8'sd1;
-    assign weights[7][19] = 8'sd1;
-    assign weights[7][20] = 8'sd1;
-    assign weights[7][21] = -8'sd1;
-    assign weights[7][22] = 8'sd1;
-    assign weights[7][23] = 8'sd1;
-    assign weights[7][24] = -8'sd1;
-    assign weights[8][0] = -8'sd1;
-    assign weights[8][1] = 8'sd1;
-    assign weights[8][2] = -8'sd1;
-    assign weights[8][3] = -8'sd1;
-    assign weights[8][4] = 8'sd1;
-    assign weights[8][5] = -8'sd1;
-    assign weights[8][6] = 8'sd1;
-    assign weights[8][7] = -8'sd1;
-    assign weights[8][8] = 8'sd0;
-    assign weights[8][9] = -8'sd1;
-    assign weights[8][10] = -8'sd1;
-    assign weights[8][11] = 8'sd1;
-    assign weights[8][12] = 8'sd1;
-    assign weights[8][13] = -8'sd1;
-    assign weights[8][14] = -8'sd1;
-    assign weights[8][15] = -8'sd1;
-    assign weights[8][16] = 8'sd1;
-    assign weights[8][17] = -8'sd1;
-    assign weights[8][18] = 8'sd1;
-    assign weights[8][19] = -8'sd1;
-    assign weights[8][20] = -8'sd1;
-    assign weights[8][21] = 8'sd1;
-    assign weights[8][22] = -8'sd1;
-    assign weights[8][23] = -8'sd1;
-    assign weights[8][24] = 8'sd1;
-    assign weights[9][0] = 8'sd1;
-    assign weights[9][1] = -8'sd1;
-    assign weights[9][2] = 8'sd1;
-    assign weights[9][3] = 8'sd1;
-    assign weights[9][4] = -8'sd1;
-    assign weights[9][5] = 8'sd1;
-    assign weights[9][6] = -8'sd1;
-    assign weights[9][7] = 8'sd1;
-    assign weights[9][8] = -8'sd1;
-    assign weights[9][9] = 8'sd0;
-    assign weights[9][10] = 8'sd1;
-    assign weights[9][11] = -8'sd1;
-    assign weights[9][12] = -8'sd1;
-    assign weights[9][13] = 8'sd1;
-    assign weights[9][14] = 8'sd1;
-    assign weights[9][15] = 8'sd1;
-    assign weights[9][16] = -8'sd1;
-    assign weights[9][17] = 8'sd1;
-    assign weights[9][18] = -8'sd1;
-    assign weights[9][19] = 8'sd1;
-    assign weights[9][20] = 8'sd1;
-    assign weights[9][21] = -8'sd1;
-    assign weights[9][22] = 8'sd1;
-    assign weights[9][23] = 8'sd1;
-    assign weights[9][24] = -8'sd1;
-    assign weights[10][0] = 8'sd1;
-    assign weights[10][1] = -8'sd1;
-    assign weights[10][2] = 8'sd1;
-    assign weights[10][3] = 8'sd1;
-    assign weights[10][4] = -8'sd1;
-    assign weights[10][5] = 8'sd1;
-    assign weights[10][6] = -8'sd1;
-    assign weights[10][7] = 8'sd1;
-    assign weights[10][8] = -8'sd1;
-    assign weights[10][9] = 8'sd1;
-    assign weights[10][10] = 8'sd0;
-    assign weights[10][11] = -8'sd1;
-    assign weights[10][12] = -8'sd1;
-    assign weights[10][13] = 8'sd1;
-    assign weights[10][14] = 8'sd1;
-    assign weights[10][15] = 8'sd1;
-    assign weights[10][16] = -8'sd1;
-    assign weights[10][17] = 8'sd1;
-    assign weights[10][18] = -8'sd1;
-    assign weights[10][19] = 8'sd1;
-    assign weights[10][20] = 8'sd1;
-    assign weights[10][21] = -8'sd1;
-    assign weights[10][22] = 8'sd1;
-    assign weights[10][23] = 8'sd1;
-    assign weights[10][24] = -8'sd1;
-    assign weights[11][0] = -8'sd1;
-    assign weights[11][1] = 8'sd1;
-    assign weights[11][2] = -8'sd1;
-    assign weights[11][3] = -8'sd1;
-    assign weights[11][4] = 8'sd1;
-    assign weights[11][5] = -8'sd1;
-    assign weights[11][6] = 8'sd1;
-    assign weights[11][7] = -8'sd1;
-    assign weights[11][8] = 8'sd1;
-    assign weights[11][9] = -8'sd1;
-    assign weights[11][10] = -8'sd1;
-    assign weights[11][11] = 8'sd0;
-    assign weights[11][12] = 8'sd1;
-    assign weights[11][13] = -8'sd1;
-    assign weights[11][14] = -8'sd1;
-    assign weights[11][15] = -8'sd1;
-    assign weights[11][16] = 8'sd1;
-    assign weights[11][17] = -8'sd1;
-    assign weights[11][18] = 8'sd1;
-    assign weights[11][19] = -8'sd1;
-    assign weights[11][20] = -8'sd1;
-    assign weights[11][21] = 8'sd1;
-    assign weights[11][22] = -8'sd1;
-    assign weights[11][23] = -8'sd1;
-    assign weights[11][24] = 8'sd1;
-    assign weights[12][0] = -8'sd1;
-    assign weights[12][1] = 8'sd1;
-    assign weights[12][2] = -8'sd1;
-    assign weights[12][3] = -8'sd1;
-    assign weights[12][4] = 8'sd1;
-    assign weights[12][5] = -8'sd1;
-    assign weights[12][6] = 8'sd1;
-    assign weights[12][7] = -8'sd1;
-    assign weights[12][8] = 8'sd1;
-    assign weights[12][9] = -8'sd1;
-    assign weights[12][10] = -8'sd1;
-    assign weights[12][11] = 8'sd1;
-    assign weights[12][12] = 8'sd0;
-    assign weights[12][13] = -8'sd1;
-    assign weights[12][14] = -8'sd1;
-    assign weights[12][15] = -8'sd1;
-    assign weights[12][16] = 8'sd1;
-    assign weights[12][17] = -8'sd1;
-    assign weights[12][18] = 8'sd1;
-    assign weights[12][19] = -8'sd1;
-    assign weights[12][20] = -8'sd1;
-    assign weights[12][21] = 8'sd1;
-    assign weights[12][22] = -8'sd1;
-    assign weights[12][23] = -8'sd1;
-    assign weights[12][24] = 8'sd1;
-    assign weights[13][0] = 8'sd1;
-    assign weights[13][1] = -8'sd1;
-    assign weights[13][2] = 8'sd1;
-    assign weights[13][3] = 8'sd1;
-    assign weights[13][4] = -8'sd1;
-    assign weights[13][5] = 8'sd1;
-    assign weights[13][6] = -8'sd1;
-    assign weights[13][7] = 8'sd1;
-    assign weights[13][8] = -8'sd1;
-    assign weights[13][9] = 8'sd1;
-    assign weights[13][10] = 8'sd1;
-    assign weights[13][11] = -8'sd1;
-    assign weights[13][12] = -8'sd1;
-    assign weights[13][13] = 8'sd0;
-    assign weights[13][14] = 8'sd1;
-    assign weights[13][15] = 8'sd1;
-    assign weights[13][16] = -8'sd1;
-    assign weights[13][17] = 8'sd1;
-    assign weights[13][18] = -8'sd1;
-    assign weights[13][19] = 8'sd1;
-    assign weights[13][20] = 8'sd1;
-    assign weights[13][21] = -8'sd1;
-    assign weights[13][22] = 8'sd1;
-    assign weights[13][23] = 8'sd1;
-    assign weights[13][24] = -8'sd1;
-    assign weights[14][0] = 8'sd1;
-    assign weights[14][1] = -8'sd1;
-    assign weights[14][2] = 8'sd1;
-    assign weights[14][3] = 8'sd1;
-    assign weights[14][4] = -8'sd1;
-    assign weights[14][5] = 8'sd1;
-    assign weights[14][6] = -8'sd1;
-    assign weights[14][7] = 8'sd1;
-    assign weights[14][8] = -8'sd1;
-    assign weights[14][9] = 8'sd1;
-    assign weights[14][10] = 8'sd1;
-    assign weights[14][11] = -8'sd1;
-    assign weights[14][12] = -8'sd1;
-    assign weights[14][13] = 8'sd1;
-    assign weights[14][14] = 8'sd0;
-    assign weights[14][15] = 8'sd1;
-    assign weights[14][16] = -8'sd1;
-    assign weights[14][17] = 8'sd1;
-    assign weights[14][18] = -8'sd1;
-    assign weights[14][19] = 8'sd1;
-    assign weights[14][20] = 8'sd1;
-    assign weights[14][21] = -8'sd1;
-    assign weights[14][22] = 8'sd1;
-    assign weights[14][23] = 8'sd1;
-    assign weights[14][24] = -8'sd1;
-    assign weights[15][0] = 8'sd1;
-    assign weights[15][1] = -8'sd1;
-    assign weights[15][2] = 8'sd1;
-    assign weights[15][3] = 8'sd1;
-    assign weights[15][4] = -8'sd1;
-    assign weights[15][5] = 8'sd1;
-    assign weights[15][6] = -8'sd1;
-    assign weights[15][7] = 8'sd1;
-    assign weights[15][8] = -8'sd1;
-    assign weights[15][9] = 8'sd1;
-    assign weights[15][10] = 8'sd1;
-    assign weights[15][11] = -8'sd1;
-    assign weights[15][12] = -8'sd1;
-    assign weights[15][13] = 8'sd1;
-    assign weights[15][14] = 8'sd1;
-    assign weights[15][15] = 8'sd0;
-    assign weights[15][16] = -8'sd1;
-    assign weights[15][17] = 8'sd1;
-    assign weights[15][18] = -8'sd1;
-    assign weights[15][19] = 8'sd1;
-    assign weights[15][20] = 8'sd1;
-    assign weights[15][21] = -8'sd1;
-    assign weights[15][22] = 8'sd1;
-    assign weights[15][23] = 8'sd1;
-    assign weights[15][24] = -8'sd1;
-    assign weights[16][0] = -8'sd1;
-    assign weights[16][1] = 8'sd1;
-    assign weights[16][2] = -8'sd1;
-    assign weights[16][3] = -8'sd1;
-    assign weights[16][4] = 8'sd1;
-    assign weights[16][5] = -8'sd1;
-    assign weights[16][6] = 8'sd1;
-    assign weights[16][7] = -8'sd1;
-    assign weights[16][8] = 8'sd1;
-    assign weights[16][9] = -8'sd1;
-    assign weights[16][10] = -8'sd1;
-    assign weights[16][11] = 8'sd1;
-    assign weights[16][12] = 8'sd1;
-    assign weights[16][13] = -8'sd1;
-    assign weights[16][14] = -8'sd1;
-    assign weights[16][15] = -8'sd1;
-    assign weights[16][16] = 8'sd0;
-    assign weights[16][17] = -8'sd1;
-    assign weights[16][18] = 8'sd1;
-    assign weights[16][19] = -8'sd1;
-    assign weights[16][20] = -8'sd1;
-    assign weights[16][21] = 8'sd1;
-    assign weights[16][22] = -8'sd1;
-    assign weights[16][23] = -8'sd1;
-    assign weights[16][24] = 8'sd1;
-    assign weights[17][0] = 8'sd1;
-    assign weights[17][1] = -8'sd1;
-    assign weights[17][2] = 8'sd1;
-    assign weights[17][3] = 8'sd1;
-    assign weights[17][4] = -8'sd1;
-    assign weights[17][5] = 8'sd1;
-    assign weights[17][6] = -8'sd1;
-    assign weights[17][7] = 8'sd1;
-    assign weights[17][8] = -8'sd1;
-    assign weights[17][9] = 8'sd1;
-    assign weights[17][10] = 8'sd1;
-    assign weights[17][11] = -8'sd1;
-    assign weights[17][12] = -8'sd1;
-    assign weights[17][13] = 8'sd1;
-    assign weights[17][14] = 8'sd1;
-    assign weights[17][15] = 8'sd1;
-    assign weights[17][16] = -8'sd1;
-    assign weights[17][17] = 8'sd0;
-    assign weights[17][18] = -8'sd1;
-    assign weights[17][19] = 8'sd1;
-    assign weights[17][20] = 8'sd1;
-    assign weights[17][21] = -8'sd1;
-    assign weights[17][22] = 8'sd1;
-    assign weights[17][23] = 8'sd1;
-    assign weights[17][24] = -8'sd1;
-    assign weights[18][0] = -8'sd1;
-    assign weights[18][1] = 8'sd1;
-    assign weights[18][2] = -8'sd1;
-    assign weights[18][3] = -8'sd1;
-    assign weights[18][4] = 8'sd1;
-    assign weights[18][5] = -8'sd1;
-    assign weights[18][6] = 8'sd1;
-    assign weights[18][7] = -8'sd1;
-    assign weights[18][8] = 8'sd1;
-    assign weights[18][9] = -8'sd1;
-    assign weights[18][10] = -8'sd1;
-    assign weights[18][11] = 8'sd1;
-    assign weights[18][12] = 8'sd1;
-    assign weights[18][13] = -8'sd1;
-    assign weights[18][14] = -8'sd1;
-    assign weights[18][15] = -8'sd1;
-    assign weights[18][16] = 8'sd1;
-    assign weights[18][17] = -8'sd1;
-    assign weights[18][18] = 8'sd0;
-    assign weights[18][19] = -8'sd1;
-    assign weights[18][20] = -8'sd1;
-    assign weights[18][21] = 8'sd1;
-    assign weights[18][22] = -8'sd1;
-    assign weights[18][23] = -8'sd1;
-    assign weights[18][24] = 8'sd1;
-    assign weights[19][0] = 8'sd1;
-    assign weights[19][1] = -8'sd1;
-    assign weights[19][2] = 8'sd1;
-    assign weights[19][3] = 8'sd1;
-    assign weights[19][4] = -8'sd1;
-    assign weights[19][5] = 8'sd1;
-    assign weights[19][6] = -8'sd1;
-    assign weights[19][7] = 8'sd1;
-    assign weights[19][8] = -8'sd1;
-    assign weights[19][9] = 8'sd1;
-    assign weights[19][10] = 8'sd1;
-    assign weights[19][11] = -8'sd1;
-    assign weights[19][12] = -8'sd1;
-    assign weights[19][13] = 8'sd1;
-    assign weights[19][14] = 8'sd1;
-    assign weights[19][15] = 8'sd1;
-    assign weights[19][16] = -8'sd1;
-    assign weights[19][17] = 8'sd1;
-    assign weights[19][18] = -8'sd1;
-    assign weights[19][19] = 8'sd0;
-    assign weights[19][20] = 8'sd1;
-    assign weights[19][21] = -8'sd1;
-    assign weights[19][22] = 8'sd1;
-    assign weights[19][23] = 8'sd1;
-    assign weights[19][24] = -8'sd1;
-    assign weights[20][0] = 8'sd1;
-    assign weights[20][1] = -8'sd1;
-    assign weights[20][2] = 8'sd1;
-    assign weights[20][3] = 8'sd1;
-    assign weights[20][4] = -8'sd1;
-    assign weights[20][5] = 8'sd1;
-    assign weights[20][6] = -8'sd1;
-    assign weights[20][7] = 8'sd1;
-    assign weights[20][8] = -8'sd1;
-    assign weights[20][9] = 8'sd1;
-    assign weights[20][10] = 8'sd1;
-    assign weights[20][11] = -8'sd1;
-    assign weights[20][12] = -8'sd1;
-    assign weights[20][13] = 8'sd1;
-    assign weights[20][14] = 8'sd1;
-    assign weights[20][15] = 8'sd1;
-    assign weights[20][16] = -8'sd1;
-    assign weights[20][17] = 8'sd1;
-    assign weights[20][18] = -8'sd1;
-    assign weights[20][19] = 8'sd1;
-    assign weights[20][20] = 8'sd0;
-    assign weights[20][21] = -8'sd1;
-    assign weights[20][22] = 8'sd1;
-    assign weights[20][23] = 8'sd1;
-    assign weights[20][24] = -8'sd1;
-    assign weights[21][0] = -8'sd1;
-    assign weights[21][1] = 8'sd1;
-    assign weights[21][2] = -8'sd1;
-    assign weights[21][3] = -8'sd1;
-    assign weights[21][4] = 8'sd1;
-    assign weights[21][5] = -8'sd1;
-    assign weights[21][6] = 8'sd1;
-    assign weights[21][7] = -8'sd1;
-    assign weights[21][8] = 8'sd1;
-    assign weights[21][9] = -8'sd1;
-    assign weights[21][10] = -8'sd1;
-    assign weights[21][11] = 8'sd1;
-    assign weights[21][12] = 8'sd1;
-    assign weights[21][13] = -8'sd1;
-    assign weights[21][14] = -8'sd1;
-    assign weights[21][15] = -8'sd1;
-    assign weights[21][16] = 8'sd1;
-    assign weights[21][17] = -8'sd1;
-    assign weights[21][18] = 8'sd1;
-    assign weights[21][19] = -8'sd1;
-    assign weights[21][20] = -8'sd1;
-    assign weights[21][21] = 8'sd0;
-    assign weights[21][22] = -8'sd1;
-    assign weights[21][23] = -8'sd1;
-    assign weights[21][24] = 8'sd1;
-    assign weights[22][0] = 8'sd1;
-    assign weights[22][1] = -8'sd1;
-    assign weights[22][2] = 8'sd1;
-    assign weights[22][3] = 8'sd1;
-    assign weights[22][4] = -8'sd1;
-    assign weights[22][5] = 8'sd1;
-    assign weights[22][6] = -8'sd1;
-    assign weights[22][7] = 8'sd1;
-    assign weights[22][8] = -8'sd1;
-    assign weights[22][9] = 8'sd1;
-    assign weights[22][10] = 8'sd1;
-    assign weights[22][11] = -8'sd1;
-    assign weights[22][12] = -8'sd1;
-    assign weights[22][13] = 8'sd1;
-    assign weights[22][14] = 8'sd1;
-    assign weights[22][15] = 8'sd1;
-    assign weights[22][16] = -8'sd1;
-    assign weights[22][17] = 8'sd1;
-    assign weights[22][18] = -8'sd1;
-    assign weights[22][19] = 8'sd1;
-    assign weights[22][20] = 8'sd1;
-    assign weights[22][21] = -8'sd1;
-    assign weights[22][22] = 8'sd0;
-    assign weights[22][23] = 8'sd1;
-    assign weights[22][24] = -8'sd1;
-    assign weights[23][0] = 8'sd1;
-    assign weights[23][1] = -8'sd1;
-    assign weights[23][2] = 8'sd1;
-    assign weights[23][3] = 8'sd1;
-    assign weights[23][4] = -8'sd1;
-    assign weights[23][5] = 8'sd1;
-    assign weights[23][6] = -8'sd1;
-    assign weights[23][7] = 8'sd1;
-    assign weights[23][8] = -8'sd1;
-    assign weights[23][9] = 8'sd1;
-    assign weights[23][10] = 8'sd1;
-    assign weights[23][11] = -8'sd1;
-    assign weights[23][12] = -8'sd1;
-    assign weights[23][13] = 8'sd1;
-    assign weights[23][14] = 8'sd1;
-    assign weights[23][15] = 8'sd1;
-    assign weights[23][16] = -8'sd1;
-    assign weights[23][17] = 8'sd1;
-    assign weights[23][18] = -8'sd1;
-    assign weights[23][19] = 8'sd1;
-    assign weights[23][20] = 8'sd1;
-    assign weights[23][21] = -8'sd1;
-    assign weights[23][22] = 8'sd1;
-    assign weights[23][23] = 8'sd0;
-    assign weights[23][24] = -8'sd1;
-    assign weights[24][0] = -8'sd1;
-    assign weights[24][1] = 8'sd1;
-    assign weights[24][2] = -8'sd1;
-    assign weights[24][3] = -8'sd1;
-    assign weights[24][4] = 8'sd1;
-    assign weights[24][5] = -8'sd1;
-    assign weights[24][6] = 8'sd1;
-    assign weights[24][7] = -8'sd1;
-    assign weights[24][8] = 8'sd1;
-    assign weights[24][9] = -8'sd1;
-    assign weights[24][10] = -8'sd1;
-    assign weights[24][11] = 8'sd1;
-    assign weights[24][12] = 8'sd1;
-    assign weights[24][13] = -8'sd1;
-    assign weights[24][14] = -8'sd1;
-    assign weights[24][15] = -8'sd1;
-    assign weights[24][16] = 8'sd1;
-    assign weights[24][17] = -8'sd1;
-    assign weights[24][18] = 8'sd1;
-    assign weights[24][19] = -8'sd1;
-    assign weights[24][20] = -8'sd1;
-    assign weights[24][21] = 8'sd1;
-    assign weights[24][22] = -8'sd1;
-    assign weights[24][23] = -8'sd1;
-    assign weights[24][24] = 8'sd0;
+    parameter N = 25;
+    parameter MAX_PASSES = 16;
 
-    logic [N-1:0] state_reg;
-    localparam int IDX_W = (N <= 1) ? 1 : $clog2(N);
+    reg clk, rst_n, start;
+    reg [N-1:0] initial_state;
 
-    logic [IDX_W-1:0] neuron_idx;
-    localparam int PASS_W = (MAX_PASSES <= 1) ? 1 : $clog2(MAX_PASSES);
+    wire [N-1:0] final_state;
+    wire busy, done, converged;
 
-    logic [PASS_W-1:0] pass_count;
+    integer test_count, pass_count, fail_count;
+    integer cycles, finished;
 
-    logic pass_changed;
-    integer signed total_input;
-    logic next_neuron_state;
+    localparam [N-1:0] STORED_PATTERN = 25'b01001_01010_01100_01010_01001;
 
-    always_comb begin
-        total_input = 0;
-        next_neuron_state = state_reg[N-1-neuron_idx];
+    hopfield_network #(
+        .N(N),
+        .MAX_PASSES(MAX_PASSES)
+    ) dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .start(start),
+        .initial_state(initial_state),
+        .final_state(final_state),
+        .busy(busy),
+        .done(done),
+        .converged(converged)
+    );
 
-        for (int i = 0; i < N; i++) begin
-            if (state_reg[N-1-i] == 1'b1) begin
-                total_input = total_input + $signed(weights[neuron_idx][i]);
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    always @(dut.state_reg) begin
+        if (rst_n && busy) begin
+            $display("Time= %0t | State: %b", $time, dut.state_reg
+            );
+        end
+    end
+
+    task automatic run_test(
+        input logic [N-1:0] test_input,
+        input logic [N-1:0] expected_output
+    );
+
+        begin
+            test_count++;
+
+            $display("\n----------------------------------------");
+            $display("TEST %0d", test_count);
+            $display("Input    : %b", test_input);
+            $display("Expected : %b", expected_output);
+            $display("----------------------------------------");
+
+            @(negedge clk);
+            initial_state = test_input;
+            start = 1;
+
+            @(negedge clk);
+            start = 0;
+
+            cycles = 0;
+            finished = 0;
+
+            while (!done && cycles < N*MAX_PASSES + 5) begin
+                @(posedge clk);
+                #1;
+                cycles++;
+            end
+
+            if (done)
+                finished = 1;
+
+            if (finished && !busy && converged && final_state === expected_output) begin
+                $display("RESULT   : PASS");
+                $display("Final    : %b", final_state);
+                $display("Cycles   : %0d", cycles);
+                pass_count++;
+
             end else begin
-                total_input = total_input - $signed(weights[neuron_idx][i]);
+
+                $display("RESULT   : FAIL");
+                $display("Final    : %b", final_state);
+                $display("Expected : %b", expected_output);
+                $display("Busy     : %b", busy);
+                $display("Done     : %b", done);
+                $display("Converged: %b", converged);
+                $display("Cycles   : %0d", cycles);
+
+                fail_count++;
+
             end
+
+            @(posedge clk);
+            #1;
+
+            if (done !== 1'b0)
+                $display("WARNING: done did not return low.");
+
         end
 
-        if (total_input > 0) begin
-            next_neuron_state = 1'b1;
-        end else if (total_input < 0) begin
-            next_neuron_state = 1'b0;
-        end
+    endtask
+
+    initial begin
+
+        $dumpfile("Sim.vcd");
+        $dumpvars(0, testbench);
+
+        rst_n = 0;
+        start = 0;
+        initial_state = '0;
+
+        test_count = 0;
+        pass_count = 0;
+        fail_count = 0;
+
+        cycles = 0;
+        finished = 0;
+
+        repeat (2) @(negedge clk);
+        rst_n = 1;
+
+        run_test(25'b01001_01000_01100_01010_00001, STORED_PATTERN);
+        run_test(25'b01001_01010_01100_01010_01000, STORED_PATTERN);
+        run_test(25'b01001_01010_00100_01010_01001, STORED_PATTERN);
+        run_test(25'b01001_00010_01100_01010_01000, STORED_PATTERN);
+        run_test(25'b00001_01000_01100_00010_01001, STORED_PATTERN);
+        run_test(25'b11001_01010_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b00000_01010_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b01101_01110_01110_01010_01001, STORED_PATTERN);
+        run_test(25'b01001_11010_11100_01010_01001, STORED_PATTERN);
+        run_test(25'b01011_01000_01100_01110_01001, STORED_PATTERN);
+        run_test(25'b11101_11011_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b00000_01000_01000_01010_11001, STORED_PATTERN);
+        run_test(25'b01011_00010_11101_01000_01011, STORED_PATTERN);
+        run_test(25'b11000_01110_00100_00010_01001, STORED_PATTERN);
+        run_test(25'b01101_11011_01110_01110_00001, STORED_PATTERN);
+        run_test(25'b10011_00010_11101_01011_01001, STORED_PATTERN);
+        run_test(25'b00000_01110_00100_11000_01100, STORED_PATTERN);
+        run_test(25'b11101_11000_01000_00010_11011, STORED_PATTERN);
+        run_test(25'b00011_00011_01000_11000_00000, STORED_PATTERN);
+        run_test(25'b11100_00000_11001_00000_01001, STORED_PATTERN);
+
+        $display("\n========================================");
+        $display("           SIMULATION SUMMARY");
+        $display("========================================");
+        $display("Total tests : %0d", test_count);
+        $display("Passed      : %0d", pass_count);
+        $display("Failed      : %0d", fail_count);
+        $display("========================================");
+
+        $finish;
+
     end
 
-    assign final_state = state_reg;
-
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            state_reg    <= '0;
-            neuron_idx   <= '0;
-            pass_count   <= '0;
-            pass_changed <= 1'b0;
-            busy         <= 1'b0;
-            done         <= 1'b0;
-            converged    <= 1'b0;
-        end else begin
-            done <= 1'b0;
-
-            if (start && !busy) begin
-                state_reg    <= initial_state;
-                neuron_idx   <= '0;
-                pass_count   <= '0;
-                pass_changed <= 1'b0;
-                busy         <= 1'b1;
-                converged    <= 1'b0;
-            end else if (busy) begin
-                state_reg[N-1-neuron_idx] <= next_neuron_state;
-
-                if (next_neuron_state != state_reg[N-1-neuron_idx])
-                    pass_changed <= 1'b1;
-
-                if (neuron_idx == N-1) begin
-                    if (!(pass_changed ||
-                          (next_neuron_state != state_reg[N-1-neuron_idx]))) begin
-                        busy      <= 1'b0;
-                        done      <= 1'b1;
-                        converged <= 1'b1;
-                    end else if (pass_count == MAX_PASSES-1) begin
-                        busy      <= 1'b0;
-                        done      <= 1'b1;
-                        converged <= 1'b0;
-                    end else begin
-                        neuron_idx   <= '0;
-                        pass_count   <= pass_count + 1'b1;
-                        pass_changed <= 1'b0;
-                    end
-                end else begin
-                    neuron_idx <= neuron_idx + 1'b1;
-                end
-            end
-        end
-    end
 endmodule
