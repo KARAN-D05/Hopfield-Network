@@ -22,11 +22,11 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
 
 ## ⚙️ Implementation
 
-- **Hebbian Weight Matrix:** A predefined symmetric weight matrix with zero diagonal entries.[Hebbian Matrix Generator](Hebbian.py)
-- **Bipolar Neurons:** Binary `1` represents `+1`, while binary `0` represents `−1`.
-- **Sequential Updates:** Neurons are updated individually according to their weighted inputs.
-- **Convergence Detection:** The network stops when a complete pass produces no state changes.
-- **Bounded Execution:** A configurable maximum pass count prevents indefinite operation.
+- [Hebbian Weight Matrix](Hebbian.py): A predefined symmetric weight matrix with zero diagonal entries.
+- Bipolar Neurons: Binary `1` represents `+1`, while binary `0` represents `−1`.
+- Sequential Updates: Neurons are updated individually according to their weighted inputs.
+- Convergence Detection: The network stops when a complete pass produces no state changes.
+- Bounded Execution: A configurable maximum pass count prevents indefinite operation.
 
 ## 🧪 Verification
 
