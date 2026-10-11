@@ -103,6 +103,7 @@ The following is the 25 × 25 weight matrix corresponding to the stored pattern.
 24     +1 -1 +1 +1 -1 +1 -1 +1 -1 +1 +1 -1 -1 +1 +1 +1 -1 +1 -1 +1 +1 -1 +1  0 -1
 25     -1 +1 -1 -1 +1 -1 +1 -1 +1 -1 -1 +1 +1 -1 -1 -1 +1 -1 +1 -1 -1 +1 -1 -1  0
 ```
+By [Hebbian Matrix Generator](../Hebbian.py)
 
 The matrix satisfies:
 
