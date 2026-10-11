@@ -23,16 +23,6 @@ Unlike conventional memory systems, which typically require an explicit address 
 * [Hebbian Matrix Generator](Hebbian.py)
 * [Source Files](src)
 
-## 🧠 Associative Memory Capacity and Recall Accuracy
-
-| Stored Patterns   | Initial States Tested | Correct Recall | Recall Accuracy |
-| ----------------- | --------------------- | -------------- | --------------- |
-| 1 (+ its inverse) | 16                    | 16             | 100%            |
-| 2                 | 16                    | —              | —               |
-| 3                 | 16                    | —              | —               |
-| 4                 | 16                    | —              | —               |
-
-
 ## 🔬 Physical Characterization
 
 The following results were obtained after synthesis using the Sky130 HD standard-cell library.
