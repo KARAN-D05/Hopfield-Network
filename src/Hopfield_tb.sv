@@ -150,7 +150,7 @@ module testbench;
         else
             $display("SOME TESTS FAILED");
 
-        $display("Simulation Complete!");
+        $display("Simulation Complete");
 
         $finish;
 
