@@ -5,7 +5,6 @@ Unlike conventional memory systems, which typically require an explicit address 
 
 ## 🛠️ Tools & Technologies
 
-![SystemVerilog](https://img.shields.io/badge/SystemVerilog-RTL-1565C0?style=flat-square)
 ![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-Simulation-1E88E5?style=flat-square)
 ![GTKWave](https://img.shields.io/badge/GTKWave-Waveforms-F57C00?style=flat-square)
 ![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
@@ -13,7 +12,7 @@ Unlike conventional memory systems, which typically require an explicit address 
 ![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
 
 <p align="center">
-  <img src="images/waveform.png" width="850"/>
+  <img src="images/waveform.png" width="1000"/>
   <br>
   <sub>Simulation waveform showing sequential neuron updates and convergence to a stable state.</sub>
 </p>
