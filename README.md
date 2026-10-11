@@ -9,29 +9,11 @@ Unlike conventional memory systems, which typically require an explicit address 
   <sub>Sequential neuron updates and convergence to a stable state.</sub>
 </p>
 
-## 🛠️ Tools & Technologies
-
-![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-Simulation-1E88E5?style=flat-square)
-![GTKWave](https://img.shields.io/badge/GTKWave-Waveforms-F57C00?style=flat-square)
-![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
-![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
-![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
-
 ## 📚 Documentation
 
 * [Hopfield Network Fundamentals](Hopfield.md)
 * [Hebbian Matrix Generator](Hebbian.py)
 * [Source Files](src)
-
-## 🔬 Physical Characterization
-
-The following results were obtained after synthesis using the Sky130 HD standard-cell library.
-
-> **Technology:** Sky130 HD
-
-| Network          | Neurons | Cell Area    | Estimated Fmax | Total Power |
-| ---------------- | ------- | ------------ | -------------- | ----------- |
-| Hopfield Network | 4       | 817.0336 µm² | ~377 MHz       | 250 µW      |
 
 ## 📜 License
 
