@@ -111,5 +111,4 @@ module hopfield_network #(
             end
         end
     end
-
 endmodule
