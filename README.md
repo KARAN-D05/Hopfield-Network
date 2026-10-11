@@ -11,10 +11,11 @@ Unlike conventional memory systems, which typically require an explicit address 
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
 ![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
 
+## 🧠 Convergence
 <p align="center">
   <img src="images/waveform.png" width="1000"/>
   <br>
-  <sub>Simulation waveform showing sequential neuron updates and convergence to a stable state.</sub>
+  <sub>Sequential neuron updates and convergence to a stable state.</sub>
 </p>
 
 ## 🔢 Hebbian Weight Matrix
