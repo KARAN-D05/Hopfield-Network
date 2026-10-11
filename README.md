@@ -29,9 +29,10 @@ The following results were obtained after synthesis using the Sky130 HD standard
 
 > **Technology:** Sky130 HD
 
-| Network | Neurons | Cell Area | Estimated Fmax | Total Power |
-|---------|--------|----------------|---------------------|-----------------|
-| Hopfield Network | 4 | 817.0336 µm² | ~377 MHz | 250 µW |
+| Network          | Neurons | Stored Patterns | Cell Area    | Estimated Fmax | Total Power |
+| ---------------- | ------- | --------------- | ------------ | -------------- | ----------- |
+| Hopfield Network | 4       | 1               | 817.0336 µm² | ~377 MHz       | 250 µW      |
+
 
 ## 📜 License
 
