@@ -45,14 +45,6 @@ $$
 S_A = [-1,-1,-1,+1]^T
 $$
 
-Weighted input:
-
-$$
-WS_A = [-1,-1,-1,+3]^T
-$$
-
-The weighted inputs reinforce the current neuron states, so a complete update pass leaves the pattern unchanged.
-
 **Stable State 2: `1110`**
 
 Bipolar representation:
@@ -60,14 +52,6 @@ Bipolar representation:
 $$
 S_B = [+1,+1,+1,-1]^T
 $$
-
-Weighted input:
-
-$$
-WS_B = [+1,+1,+1,-3]^T
-$$
-
-This pattern is also stable because all neurons retain their current states after updating.
 
 The two patterns are inverses:
 
@@ -77,13 +61,12 @@ $$
 
 Since reversing every neuron's sign also reverses its weighted input, both configurations remain stable under the same weight matrix.
 
-The final state depends on the initial configuration and the sequential neuron-update order.
-
 ## 🔬 Physical Characterization
 
 The following results were obtained after synthesis using the Sky130 HD standard-cell library.
 
 > **Technology:** Sky130 HD
+
 > **Synthesis Tool:** Yosys
 
 | Metric                       |    Value |
