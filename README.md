@@ -18,19 +18,13 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
   <sub>A corrupted input pattern is recalled as the stored configuration through iterative neuron updates.</sub>
 </p>
 
-## 📚 Documentation
-
-- [Hopfield Network Fundamentals](Hopfield.md) 
-- [Hebbian Matrix Generator](Hebbian.py)
-- [Source Files](src)
-
 ## ⚙️ Implementation
 
-* **Hebbian Weight Matrix:** A predefined symmetric weight matrix with zero diagonal entries.
-* **Bipolar Neurons:** Binary `1` represents `+1`, while binary `0` represents `−1`.
-* **Sequential Updates:** Neurons are updated individually according to their weighted inputs.
-* **Convergence Detection:** The network stops when a complete pass produces no state changes.
-* **Bounded Execution:** A configurable maximum pass count prevents indefinite operation.
+- **Hebbian Weight Matrix:** A predefined symmetric weight matrix with zero diagonal entries.
+- **Bipolar Neurons:** Binary `1` represents `+1`, while binary `0` represents `−1`.
+- **Sequential Updates:** Neurons are updated individually according to their weighted inputs.
+- **Convergence Detection:** The network stops when a complete pass produces no state changes.
+- **Bounded Execution:** A configurable maximum pass count prevents indefinite operation.
 
 ## 🧪 Verification
 
@@ -43,7 +37,13 @@ The implementation has been tested through both RTL simulation and gate-level si
 
 All 20 selected test inputs converged to the expected stored pattern. These results demonstrate successful recall for the tested cases, rather than guaranteeing recall for every possible input.
 
+## 📚 Documentation
+
+- [Hopfield Network Fundamentals](Hopfield.md) 
+- [Hebbian Matrix Generator](Hebbian.py)
+- [Source Files](src)
+
 ## 📜 License
 
-* Source code and HDL files are licensed under the MIT License.
-* Documentation, diagrams, images, and PDFs are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
+- Source code and HDL files are licensed under the MIT License.
+- Documentation, diagrams, images, and PDFs are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
