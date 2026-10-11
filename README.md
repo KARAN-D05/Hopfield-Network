@@ -3,6 +3,12 @@ A Hopfield Network is a recurrent neural network that functions as an associativ
 
 Unlike conventional memory systems, which typically require an explicit address to retrieve stored data, associative memory can recover a stored pattern from a sufficiently similar or partially corrupted input.
 
+<p align="center">
+  <img src="images/waveform.png" width="1000"/>
+  <br>
+  <sub>Sequential neuron updates and convergence to a stable state.</sub>
+</p>
+
 ## 🛠️ Tools & Technologies
 
 ![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-Simulation-1E88E5?style=flat-square)
@@ -10,13 +16,6 @@ Unlike conventional memory systems, which typically require an explicit address 
 ![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
 ![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
-
-## 🧠 Convergence
-<p align="center">
-  <img src="images/waveform.png" width="1000"/>
-  <br>
-  <sub>Sequential neuron updates and convergence to a stable state.</sub>
-</p>
 
 ## 🔢 Hebbian Weight Matrix
 
