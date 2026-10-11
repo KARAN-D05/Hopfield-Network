@@ -58,23 +58,15 @@ $$
 S_B=-S_A
 $$
 
-Since reversing every neuron's sign also reverses its weighted input, both configurations remain stable under the same weight matrix.
-
 ## 🔬 Physical Characterization
 
 The following results were obtained after synthesis using the Sky130 HD standard-cell library.
 
 > **Technology:** Sky130 HD
 
-> **Synthesis Tool:** Yosys
-
 | Metric                       |    Value |
 | ---------------------------- | -------  |
-| Standard-Cell Count          |       87 |
-| Sequential Cells             |       14 |
 | Cell Area (µm²)              | 817.0336 |
-| Estimated Critical Path (ns) |     2.52 |
-| Setup Slack (ns)             |    +7.35 |
 | Estimated Fmax (MHz)         |     ~377 |
 | Total Power (µW)             |      250 |
 
