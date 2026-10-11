@@ -21,7 +21,7 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
 </p>
 
 <p align="center">
-  <img src="images/recall.png" width="800" alt="A corrupted 5 by 5 input pattern transformed into the stored pattern by the Hopfield network."/>
+  <img src="images/recall.png" width="600" alt="A corrupted 5 by 5 input pattern transformed into the stored pattern by the Hopfield network."/>
 </p>
 
 ## ⚙️ Implementation
