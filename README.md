@@ -9,7 +9,7 @@ Unlike conventional memory systems, which retrieve data using an explicit addres
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
 
 <p align="center">
-  <img src="images/waveform.png" width="1000" />
+  <img src="images/single_recall.png" width="1000" />
 </p>
 
 <p align="center">
@@ -41,7 +41,11 @@ The implementation has been tested through both RTL simulation and gate-level si
 | RTL simulation        | 20/20 tests passed |
 | Gate-level simulation | 20/20 tests passed |
 
-All 20 selected test inputs converged to the expected stored pattern. These results demonstrate successful recall for the tested cases, rather than guaranteeing recall for every possible input.
+<p align="center">
+  <img src="images/multiple_recalls.png" width="1000""/>
+   <br>
+  <sub>All 20 selected test inputs converged to the expected stored pattern.</sub>
+</p>
 
 ## 📜 License
 
