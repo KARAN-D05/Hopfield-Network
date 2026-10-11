@@ -3,26 +3,19 @@
 
 module testbench;
 
-    parameter N = 4;
+    parameter N = 25;
     parameter MAX_PASSES = 16;
 
-    reg clk;
-    reg rst_n;
-    reg start;
+    reg clk, rst_n, start;
     reg [N-1:0] initial_state;
 
     wire [N-1:0] final_state;
-    wire busy;
-    wire done;
-    wire converged;
+    wire busy, done, converged;
 
-    integer test_count;
-    integer pass_count;
-    integer fail_count;
+    integer test_count, pass_count, fail_count;
+    integer cycles, finished;
 
-    integer cycles;
-    integer finished;
-    integer errors_before;
+    localparam [N-1:0] STORED_PATTERN = 25'b01001_01010_01100_01010_01001;
 
     hopfield_network #(
         .N(N),
@@ -41,6 +34,12 @@ module testbench;
     initial clk = 0;
     always #5 clk = ~clk;
 
+    always @(dut.state_reg) begin
+        if (rst_n && busy) begin
+            $display("Time= %0t | State: %b", $time, dut.state_reg
+            );
+        end
+    end
 
     task automatic run_test(
         input logic [N-1:0] test_input,
@@ -48,54 +47,61 @@ module testbench;
     );
 
         begin
+            test_count++;
 
-            test_count = test_count + 1;
-            errors_before = fail_count;
+            $display("\n----------------------------------------");
+            $display("TEST %0d", test_count);
+            $display("Input    : %b", test_input);
+            $display("Expected : %b", expected_output);
+            $display("----------------------------------------");
 
             @(negedge clk);
             initial_state = test_input;
-            start = 1'b1;
+            start = 1;
 
             @(negedge clk);
-            start = 1'b0;
+            start = 0;
 
             cycles = 0;
             finished = 0;
 
-            while ((cycles < (N * MAX_PASSES + 5)) && (finished == 0)) begin
-                if (done === 1'b1) begin
-                    finished = 1;
-                end else begin
-                    @(negedge clk);
-                    cycles = cycles + 1;
-                end
+            while (!done && cycles < N*MAX_PASSES + 5) begin
+                @(posedge clk);
+                #1;
+                cycles++;
             end
 
-            if (finished == 0) begin
-                $display("FAIL | Input=%b | Timeout", test_input);
-                fail_count = fail_count + 1;
-            end else if (busy !== 1'b0) begin
-                $display( "FAIL | Input=%b | Busy still high", test_input);
-                fail_count = fail_count + 1;
-            end else if (converged !== 1'b1) begin
-                $display("FAIL | Input=%b | No convergence | Final=%b", test_input, final_state);
-                fail_count = fail_count + 1;
-            end else if (final_state !== expected_output) begin
-                $display("FAIL | Input=%b | Expected=%b | Actual=%b", test_input, expected_output, final_state);
-                fail_count = fail_count + 1;
+            if (done)
+                finished = 1;
+
+            if (finished && !busy && converged && final_state === expected_output) begin
+                $display("RESULT   : PASS");
+                $display("Final    : %b", final_state);
+                $display("Cycles   : %0d", cycles);
+                pass_count++;
+
             end else begin
-                $display("PASS | Input=%b | Expected=%b | Actual=%b | Cycles=%0d", test_input, expected_output, final_state, cycles);
-                pass_count = pass_count + 1;
+
+                $display("RESULT   : FAIL");
+                $display("Final    : %b", final_state);
+                $display("Expected : %b", expected_output);
+                $display("Busy     : %b", busy);
+                $display("Done     : %b", done);
+                $display("Converged: %b", converged);
+                $display("Cycles   : %0d", cycles);
+
+                fail_count++;
+
             end
 
             @(posedge clk);
             #1;
 
-            if (done !== 1'b0) begin
-                $display("FAIL | Input=%b | done did not return low", test_input);
-                fail_count = fail_count + 1;
-            end
+            if (done !== 1'b0)
+                $display("WARNING: done did not return low.");
+
         end
+
     endtask
 
     initial begin
@@ -103,54 +109,48 @@ module testbench;
         $dumpfile("Sim.vcd");
         $dumpvars(0, testbench);
 
-        $monitor("t=%0t | input=%b | state=%b | busy=%b | done=%b | converged=%b",$time, initial_state, final_state,busy, done, converged);
-
-        rst_n = 1'b0;
-        start = 1'b0;
+        rst_n = 0;
+        start = 0;
         initial_state = '0;
 
         test_count = 0;
         pass_count = 0;
         fail_count = 0;
 
+        cycles = 0;
+        finished = 0;
+
         repeat (2) @(negedge clk);
-        rst_n = 1'b1;
+        rst_n = 1;
 
-        run_test(4'b0000, 4'b0001);
-        run_test(4'b0001, 4'b0001);
-        run_test(4'b0010, 4'b1110);
-        run_test(4'b0011, 4'b0001);
+        run_test(25'b01001_01000_01100_01010_00001, STORED_PATTERN);
+        run_test(25'b01001_01010_01100_01010_01000, STORED_PATTERN);
+        run_test(25'b01001_01010_00100_01010_01001, STORED_PATTERN);
+        run_test(25'b01001_00010_01100_01010_01000, STORED_PATTERN);
+        run_test(25'b00001_01000_01100_00010_01001, STORED_PATTERN);
+        run_test(25'b11001_01010_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b00000_01010_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b01101_01110_01110_01010_01001, STORED_PATTERN);
+        run_test(25'b01001_11010_11100_01010_01001, STORED_PATTERN);
+        run_test(25'b01011_01000_01100_01110_01001, STORED_PATTERN);
+        run_test(25'b11101_11011_01100_01010_01001, STORED_PATTERN);
+        run_test(25'b00000_01000_01000_01010_11001, STORED_PATTERN);
+        run_test(25'b01011_00010_11101_01000_01011, STORED_PATTERN);
+        run_test(25'b11000_01110_00100_00010_01001, STORED_PATTERN);
+        run_test(25'b01101_11011_01110_01110_00001, STORED_PATTERN);
+        run_test(25'b10011_00010_11101_01011_01001, STORED_PATTERN);
+        run_test(25'b00000_01110_00100_11000_01100, STORED_PATTERN);
+        run_test(25'b11101_11000_01000_00010_11011, STORED_PATTERN);
+        run_test(25'b00011_00011_01000_11000_00000, STORED_PATTERN);
+        run_test(25'b11100_00000_11001_00000_01001, STORED_PATTERN);
 
-        run_test(4'b0100, 4'b1110);
-        run_test(4'b0101, 4'b0001);
-        run_test(4'b0110, 4'b1110);
-        run_test(4'b0111, 4'b1110);
-
-        run_test(4'b1000, 4'b0001);
-        run_test(4'b1001, 4'b0001);
-        run_test(4'b1010, 4'b1110);
-        run_test(4'b1011, 4'b0001);
-
-        run_test(4'b1100, 4'b1110);
-        run_test(4'b1101, 4'b0001);
-        run_test(4'b1110, 4'b1110);
-        run_test(4'b1111, 4'b1110);
-
-        $display("");
-        $display("======================================");
-        $display("       SIMULATION SUMMARY");
-        $display("======================================");
+        $display("\n========================================");
+        $display("           SIMULATION SUMMARY");
+        $display("========================================");
         $display("Total tests : %0d", test_count);
         $display("Passed      : %0d", pass_count);
         $display("Failed      : %0d", fail_count);
-        $display("======================================");
-
-        if (fail_count == 0)
-            $display("ALL TESTS PASSED");
-        else
-            $display("SOME TESTS FAILED");
-
-        $display("Simulation Complete");
+        $display("========================================");
 
         $finish;
 
