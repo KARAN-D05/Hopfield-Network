@@ -15,7 +15,7 @@ Unlike conventional memory systems, which retrieve data using an explicit addres
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
 
 <p align="center">
-  <img src="images/waveform.png" width="1000" />
+  <img src="images/waveform.png" width="1500" />
   <br>
   <sub>A corrupted input pattern is recalled as the stored configuration through iterative neuron updates.</sub>
 </p>
