@@ -41,7 +41,7 @@ The weights support two stable configurations: a bipolar pattern and its inverse
 Bipolar representation:
 
 $$
-S_A = [-1,-1,-1,+1]^T
+S_A = [-1,-1,-1,+1]
 $$
 
 **Stable State 2: `1110`**
@@ -49,7 +49,7 @@ $$
 Bipolar representation:
 
 $$
-S_B = [+1,+1,+1,-1]^T
+S_B = [+1,+1,+1,-1]
 $$
 
 The two patterns are inverses:
