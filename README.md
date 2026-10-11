@@ -23,47 +23,6 @@ Unlike conventional memory systems, which typically require an explicit address 
 * [Hebbian Matrix Generator](Hebbian.py)
 * [Source Files](src)
 
-## 🔢 Hebbian Weight Matrix
-
-The network uses the following weight matrix:
-
-```text
-Hebbian Weight Matrix:
-
-   0    1    1   -1
-   1    0    1   -1
-   1    1    0   -1
-  -1   -1   -1    0
-```
-
-The matrix is symmetric, with zero diagonal entries to prevent self-connections.
-
-The weights support two stable configurations: a bipolar pattern and its inverse.
-
-### Stable Configurations
-
-**Stable State 1: `0001`**
-
-Bipolar representation:
-
-$$
-S_A = [-1,-1,-1,+1]
-$$
-
-**Stable State 2: `1110`**
-
-Bipolar representation:
-
-$$
-S_B = [+1,+1,+1,-1]
-$$
-
-The two patterns are inverses:
-
-$$
-S_B=-S_A
-$$
-
 ## 🔬 Physical Characterization
 
 The following results were obtained after synthesis using the Sky130 HD standard-cell library.
