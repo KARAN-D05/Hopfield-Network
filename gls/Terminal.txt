@@ -1,109 +1,295 @@
-t=0 | input=0000 | state=0000 | busy=0 | done=0 | converged=0
-t=35000 | input=0000 | state=0000 | busy=1 | done=0 | converged=0
-t=75000 | input=0000 | state=0001 | busy=1 | done=0 | converged=0
-t=115000 | input=0000 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=0000 | Expected=0001 | Actual=0001 | Cycles=8
-t=125000 | input=0000 | state=0001 | busy=0 | done=0 | converged=1
-t=130000 | input=0001 | state=0001 | busy=0 | done=0 | converged=1
-t=135000 | input=0001 | state=0001 | busy=1 | done=0 | converged=0
-t=175000 | input=0001 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=0001 | Expected=0001 | Actual=0001 | Cycles=4
-t=185000 | input=0001 | state=0001 | busy=0 | done=0 | converged=1
-t=190000 | input=0010 | state=0001 | busy=0 | done=0 | converged=1
-t=195000 | input=0010 | state=0010 | busy=1 | done=0 | converged=0
-t=205000 | input=0010 | state=1010 | busy=1 | done=0 | converged=0
-t=215000 | input=0010 | state=1110 | busy=1 | done=0 | converged=0
-t=275000 | input=0010 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=0010 | Expected=1110 | Actual=1110 | Cycles=8
-t=285000 | input=0010 | state=1110 | busy=0 | done=0 | converged=1
-t=290000 | input=0011 | state=1110 | busy=0 | done=0 | converged=1
-t=295000 | input=0011 | state=0011 | busy=1 | done=0 | converged=0
-t=325000 | input=0011 | state=0001 | busy=1 | done=0 | converged=0
-t=375000 | input=0011 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=0011 | Expected=0001 | Actual=0001 | Cycles=8
-t=385000 | input=0011 | state=0001 | busy=0 | done=0 | converged=1
-t=390000 | input=0100 | state=0001 | busy=0 | done=0 | converged=1
-t=395000 | input=0100 | state=0100 | busy=1 | done=0 | converged=0
-t=405000 | input=0100 | state=1100 | busy=1 | done=0 | converged=0
-t=425000 | input=0100 | state=1110 | busy=1 | done=0 | converged=0
-t=475000 | input=0100 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=0100 | Expected=1110 | Actual=1110 | Cycles=8
-t=485000 | input=0100 | state=1110 | busy=0 | done=0 | converged=1
-t=490000 | input=0101 | state=1110 | busy=0 | done=0 | converged=1
-t=495000 | input=0101 | state=0101 | busy=1 | done=0 | converged=0
-t=515000 | input=0101 | state=0001 | busy=1 | done=0 | converged=0
-t=575000 | input=0101 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=0101 | Expected=0001 | Actual=0001 | Cycles=8
-t=585000 | input=0101 | state=0001 | busy=0 | done=0 | converged=1
-t=590000 | input=0110 | state=0001 | busy=0 | done=0 | converged=1
-t=595000 | input=0110 | state=0110 | busy=1 | done=0 | converged=0
-t=605000 | input=0110 | state=1110 | busy=1 | done=0 | converged=0
-t=675000 | input=0110 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=0110 | Expected=1110 | Actual=1110 | Cycles=8
-t=685000 | input=0110 | state=1110 | busy=0 | done=0 | converged=1
-t=690000 | input=0111 | state=1110 | busy=0 | done=0 | converged=1
-t=695000 | input=0111 | state=0111 | busy=1 | done=0 | converged=0
-t=705000 | input=0111 | state=1111 | busy=1 | done=0 | converged=0
-t=735000 | input=0111 | state=1110 | busy=1 | done=0 | converged=0
-t=775000 | input=0111 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=0111 | Expected=1110 | Actual=1110 | Cycles=8
-t=785000 | input=0111 | state=1110 | busy=0 | done=0 | converged=1
-t=790000 | input=1000 | state=1110 | busy=0 | done=0 | converged=1
-t=795000 | input=1000 | state=1000 | busy=1 | done=0 | converged=0
-t=805000 | input=1000 | state=0000 | busy=1 | done=0 | converged=0
-t=835000 | input=1000 | state=0001 | busy=1 | done=0 | converged=0
-t=875000 | input=1000 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=1000 | Expected=0001 | Actual=0001 | Cycles=8
-t=885000 | input=1000 | state=0001 | busy=0 | done=0 | converged=1
-t=890000 | input=1001 | state=0001 | busy=0 | done=0 | converged=1
-t=895000 | input=1001 | state=1001 | busy=1 | done=0 | converged=0
-t=905000 | input=1001 | state=0001 | busy=1 | done=0 | converged=0
-t=975000 | input=1001 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=1001 | Expected=0001 | Actual=0001 | Cycles=8
-t=985000 | input=1001 | state=0001 | busy=0 | done=0 | converged=1
-t=990000 | input=1010 | state=0001 | busy=0 | done=0 | converged=1
-t=995000 | input=1010 | state=1010 | busy=1 | done=0 | converged=0
-t=1015000 | input=1010 | state=1110 | busy=1 | done=0 | converged=0
-t=1075000 | input=1010 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=1010 | Expected=1110 | Actual=1110 | Cycles=8
-t=1085000 | input=1010 | state=1110 | busy=0 | done=0 | converged=1
-t=1090000 | input=1011 | state=1110 | busy=0 | done=0 | converged=1
-t=1095000 | input=1011 | state=1011 | busy=1 | done=0 | converged=0
-t=1105000 | input=1011 | state=0011 | busy=1 | done=0 | converged=0
-t=1125000 | input=1011 | state=0001 | busy=1 | done=0 | converged=0
-t=1175000 | input=1011 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=1011 | Expected=0001 | Actual=0001 | Cycles=8
-t=1185000 | input=1011 | state=0001 | busy=0 | done=0 | converged=1
-t=1190000 | input=1100 | state=0001 | busy=0 | done=0 | converged=1
-t=1195000 | input=1100 | state=1100 | busy=1 | done=0 | converged=0
-t=1225000 | input=1100 | state=1110 | busy=1 | done=0 | converged=0
-t=1275000 | input=1100 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=1100 | Expected=1110 | Actual=1110 | Cycles=8
-t=1285000 | input=1100 | state=1110 | busy=0 | done=0 | converged=1
-t=1290000 | input=1101 | state=1110 | busy=0 | done=0 | converged=1
-t=1295000 | input=1101 | state=1101 | busy=1 | done=0 | converged=0
-t=1305000 | input=1101 | state=0101 | busy=1 | done=0 | converged=0
-t=1315000 | input=1101 | state=0001 | busy=1 | done=0 | converged=0
-t=1375000 | input=1101 | state=0001 | busy=0 | done=1 | converged=1
-PASS | Input=1101 | Expected=0001 | Actual=0001 | Cycles=8
-t=1385000 | input=1101 | state=0001 | busy=0 | done=0 | converged=1
-t=1390000 | input=1110 | state=0001 | busy=0 | done=0 | converged=1
-t=1395000 | input=1110 | state=1110 | busy=1 | done=0 | converged=0
-t=1435000 | input=1110 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=1110 | Expected=1110 | Actual=1110 | Cycles=4
-t=1445000 | input=1110 | state=1110 | busy=0 | done=0 | converged=1
-t=1450000 | input=1111 | state=1110 | busy=0 | done=0 | converged=1
-t=1455000 | input=1111 | state=1111 | busy=1 | done=0 | converged=0
-t=1495000 | input=1111 | state=1110 | busy=1 | done=0 | converged=0
-t=1535000 | input=1111 | state=1110 | busy=0 | done=1 | converged=1
-PASS | Input=1111 | Expected=1110 | Actual=1110 | Cycles=8
-t=1545000 | input=1111 | state=1110 | busy=0 | done=0 | converged=1
+----------------------------------------
+TEST 1
+Input    : 0100101000011000101000001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=35000 | State: 0100101000011000101000001
+Time=125000 | State: 0100101010011000101000001
+Time=255000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
 
-======================================
-       SIMULATION SUMMARY
-======================================
-Total tests : 16
-Passed      : 16
+----------------------------------------
+TEST 2
+Input    : 0100101010011000101001000
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=555000 | State: 0100101010011000101001000
+Time=805000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 3
+Input    : 0100101010001000101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=1075000 | State: 0100101010001000101001001
+Time=1195000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 4
+Input    : 0100100010011000101001000
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=1595000 | State: 0100100010011000101001000
+Time=1665000 | State: 0100101010011000101001000
+Time=1845000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 5
+Input    : 0000101000011000001001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=2115000 | State: 0000101000011000001001001
+Time=2135000 | State: 0100101000011000001001001
+Time=2205000 | State: 0100101010011000001001001
+Time=2285000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 6
+Input    : 1100101010011000101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=2635000 | State: 1100101010011000101001001
+Time=2645000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 7
+Input    : 0000001010011000101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=3155000 | State: 0000001010011000101001001
+Time=3175000 | State: 0100001010011000101001001
+Time=3205000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 8
+Input    : 0110101110011100101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=3675000 | State: 0110101110011100101001001
+Time=3705000 | State: 0100101110011100101001001
+Time=3755000 | State: 0100101010011100101001001
+Time=3815000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 9
+Input    : 0100111010111000101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=4195000 | State: 0100111010111000101001001
+Time=4255000 | State: 0100101010111000101001001
+Time=4305000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 10
+Input    : 0101101000011000111001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=4715000 | State: 0101101000011000111001001
+Time=4755000 | State: 0100101000011000111001001
+Time=4805000 | State: 0100101010011000111001001
+Time=4895000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 11
+Input    : 1110111011011000101001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=5235000 | State: 1110111011011000101001001
+Time=5245000 | State: 0110111011011000101001001
+Time=5265000 | State: 0100111011011000101001001
+Time=5295000 | State: 0100101011011000101001001
+Time=5335000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 12
+Input    : 0000001000010000101011001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=5755000 | State: 0000001000010000101011001
+Time=5775000 | State: 0100001000010000101011001
+Time=5805000 | State: 0100101000010000101011001
+Time=5845000 | State: 0100101010010000101011001
+Time=5885000 | State: 0100101010011000101011001
+Time=5965000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 13
+Input    : 0101100010111010100001011
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=6275000 | State: 0101100010111010100001011
+Time=6315000 | State: 0100100010111010100001011
+Time=6345000 | State: 0100101010111010100001011
+Time=6385000 | State: 0100101010011010100001011
+Time=6425000 | State: 0100101010011000100001011
+Time=6465000 | State: 0100101010011000101001011
+Time=6515000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 14
+Input    : 1100001110001000001001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=6795000 | State: 1100001110001000001001001
+Time=6805000 | State: 0100001110001000001001001
+Time=6845000 | State: 0100101110001000001001001
+Time=6875000 | State: 0100101010001000001001001
+Time=6915000 | State: 0100101010011000001001001
+Time=6965000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 15
+Input    : 0110111011011100111000001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=7315000 | State: 0110111011011100111000001
+Time=7345000 | State: 0100111011011100111000001
+Time=7375000 | State: 0100101011011100111000001
+Time=7415000 | State: 0100101010011100111000001
+Time=7455000 | State: 0100101010011000111000001
+Time=7495000 | State: 0100101010011000101000001
+Time=7535000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 16
+Input    : 1001100010111010101101001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=7835000 | State: 1001100010111010101101001
+Time=7845000 | State: 0001100010111010101101001
+Time=7855000 | State: 0101100010111010101101001
+Time=7875000 | State: 0100100010111010101101001
+Time=7905000 | State: 0100101010111010101101001
+Time=7945000 | State: 0100101010011010101101001
+Time=7985000 | State: 0100101010011000101101001
+Time=8035000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 17
+Input    : 0000001110001001100001100
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=8355000 | State: 0000001110001001100001100
+Time=8375000 | State: 0100001110001001100001100
+Time=8405000 | State: 0100101110001001100001100
+Time=8435000 | State: 0100101010001001100001100
+Time=8475000 | State: 0100101010011001100001100
+Time=8515000 | State: 0100101010011000100001100
+Time=8545000 | State: 0100101010011000101001100
+Time=8585000 | State: 0100101010011000101001000
+Time=8605000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 18
+Input    : 1110111000010000001011011
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=8875000 | State: 1110111000010000001011011
+Time=8885000 | State: 0110111000010000001011011
+Time=8905000 | State: 0100111000010000001011011
+Time=8935000 | State: 0100101000010000001011011
+Time=8965000 | State: 0100101010010000001011011
+Time=9005000 | State: 0100101010011000001011011
+Time=9045000 | State: 0100101010011000101011011
+Time=9085000 | State: 0100101010011000101001011
+Time=9115000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 19
+Input    : 0001100011010001100000000
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=9395000 | State: 0001100011010001100000000
+Time=9415000 | State: 0101100011010001100000000
+Time=9435000 | State: 0100100011010001100000000
+Time=9465000 | State: 0100101011010001100000000
+Time=9495000 | State: 0100101010010001100000000
+Time=9525000 | State: 0100101010011001100000000
+Time=9555000 | State: 0100101010011000100000000
+Time=9585000 | State: 0100101010011000101000000
+Time=9615000 | State: 0100101010011000101001000
+Time=9645000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+----------------------------------------
+TEST 20
+Input    : 1110000000110010000001001
+Expected : 0100101010011000101001001
+----------------------------------------
+Time=9915000 | State: 1110000000110010000001001
+Time=9925000 | State: 0110000000110010000001001
+Time=9945000 | State: 0100000000110010000001001
+Time=9965000 | State: 0100100000110010000001001
+Time=9985000 | State: 0100101000110010000001001
+Time=10005000 | State: 0100101010110010000001001
+Time=10025000 | State: 0100101010010010000001001
+Time=10045000 | State: 0100101010011010000001001
+Time=10065000 | State: 0100101010011000000001001
+Time=10085000 | State: 0100101010011000100001001
+Time=10105000 | State: 0100101010011000101001001
+RESULT   : PASS
+Final    : 0100101010011000101001001
+Cycles   : 50
+
+========================================
+           SIMULATION SUMMARY
+========================================
+Total tests : 20
+Passed      : 20
 Failed      : 0
-======================================
-ALL TESTS PASSED
+========================================
