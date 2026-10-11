@@ -18,7 +18,7 @@ The design uses a predefined symmetric weight matrix with zero diagonal entries.
 * Testbench verification of all 16 initial states for the 4-neuron configuration
 
 <p align="center">
-  <img src="../images/synthesis.png" width="800"/>
+  <img src="../images/synthesis.png" width="600"/>
   <br>
   <sub>Hopfield Network Synthesis</sub>
 </p>
