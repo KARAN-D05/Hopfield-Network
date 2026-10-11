@@ -17,6 +17,12 @@ Unlike conventional memory systems, which typically require an explicit address 
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
 ![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
 
+## 📚 Documentation
+
+* [Hopfield Network Fundamentals](Hopfield.md)
+* [Hebbian Matrix Generator](Hebbian.py)
+* [Source Files](src)
+
 ## 🔢 Hebbian Weight Matrix
 
 The network uses the following weight matrix:
