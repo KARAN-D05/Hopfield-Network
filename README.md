@@ -15,13 +15,13 @@ Unlike conventional memory systems, which retrieve data using an explicit addres
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
 
 <p align="center">
-  <img src="images/waveform.png" width="1500" />
+  <img src="images/waveform.png" width="1000" />
   <br>
   <sub>A corrupted input pattern is recalled as the stored configuration through iterative neuron updates.</sub>
 </p>
 
 <p align="center">
-  <img src="images/recall.png" width="600" alt="A corrupted 5 by 5 input pattern transformed into the stored pattern by the Hopfield network."/>
+  <img src="images/recall.png" width="700" alt="A corrupted 5 by 5 input pattern transformed into the stored pattern by the Hopfield network."/>
 </p>
 
 ## ⚙️ Implementation
