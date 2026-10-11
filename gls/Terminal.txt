@@ -1,0 +1,112 @@
+VCD info: dumpfile Sim.vcd opened for output.
+t=0 | input=0000 | state=0000 | busy=0 | done=0 | converged=0
+t=35000 | input=0000 | state=0000 | busy=1 | done=0 | converged=0
+t=75000 | input=0000 | state=0001 | busy=1 | done=0 | converged=0
+t=115000 | input=0000 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=0000 | Expected=0001 | Actual=0001 | Cycles=8
+t=125000 | input=0000 | state=0001 | busy=0 | done=0 | converged=1
+t=130000 | input=0001 | state=0001 | busy=0 | done=0 | converged=1
+t=135000 | input=0001 | state=0001 | busy=1 | done=0 | converged=0
+t=175000 | input=0001 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=0001 | Expected=0001 | Actual=0001 | Cycles=4
+t=185000 | input=0001 | state=0001 | busy=0 | done=0 | converged=1
+t=190000 | input=0010 | state=0001 | busy=0 | done=0 | converged=1
+t=195000 | input=0010 | state=0010 | busy=1 | done=0 | converged=0
+t=205000 | input=0010 | state=1010 | busy=1 | done=0 | converged=0
+t=215000 | input=0010 | state=1110 | busy=1 | done=0 | converged=0
+t=275000 | input=0010 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=0010 | Expected=1110 | Actual=1110 | Cycles=8
+t=285000 | input=0010 | state=1110 | busy=0 | done=0 | converged=1
+t=290000 | input=0011 | state=1110 | busy=0 | done=0 | converged=1
+t=295000 | input=0011 | state=0011 | busy=1 | done=0 | converged=0
+t=325000 | input=0011 | state=0001 | busy=1 | done=0 | converged=0
+t=375000 | input=0011 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=0011 | Expected=0001 | Actual=0001 | Cycles=8
+t=385000 | input=0011 | state=0001 | busy=0 | done=0 | converged=1
+t=390000 | input=0100 | state=0001 | busy=0 | done=0 | converged=1
+t=395000 | input=0100 | state=0100 | busy=1 | done=0 | converged=0
+t=405000 | input=0100 | state=1100 | busy=1 | done=0 | converged=0
+t=425000 | input=0100 | state=1110 | busy=1 | done=0 | converged=0
+t=475000 | input=0100 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=0100 | Expected=1110 | Actual=1110 | Cycles=8
+t=485000 | input=0100 | state=1110 | busy=0 | done=0 | converged=1
+t=490000 | input=0101 | state=1110 | busy=0 | done=0 | converged=1
+t=495000 | input=0101 | state=0101 | busy=1 | done=0 | converged=0
+t=515000 | input=0101 | state=0001 | busy=1 | done=0 | converged=0
+t=575000 | input=0101 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=0101 | Expected=0001 | Actual=0001 | Cycles=8
+t=585000 | input=0101 | state=0001 | busy=0 | done=0 | converged=1
+t=590000 | input=0110 | state=0001 | busy=0 | done=0 | converged=1
+t=595000 | input=0110 | state=0110 | busy=1 | done=0 | converged=0
+t=605000 | input=0110 | state=1110 | busy=1 | done=0 | converged=0
+t=675000 | input=0110 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=0110 | Expected=1110 | Actual=1110 | Cycles=8
+t=685000 | input=0110 | state=1110 | busy=0 | done=0 | converged=1
+t=690000 | input=0111 | state=1110 | busy=0 | done=0 | converged=1
+t=695000 | input=0111 | state=0111 | busy=1 | done=0 | converged=0
+t=705000 | input=0111 | state=1111 | busy=1 | done=0 | converged=0
+t=735000 | input=0111 | state=1110 | busy=1 | done=0 | converged=0
+t=775000 | input=0111 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=0111 | Expected=1110 | Actual=1110 | Cycles=8
+t=785000 | input=0111 | state=1110 | busy=0 | done=0 | converged=1
+t=790000 | input=1000 | state=1110 | busy=0 | done=0 | converged=1
+t=795000 | input=1000 | state=1000 | busy=1 | done=0 | converged=0
+t=805000 | input=1000 | state=0000 | busy=1 | done=0 | converged=0
+t=835000 | input=1000 | state=0001 | busy=1 | done=0 | converged=0
+t=875000 | input=1000 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=1000 | Expected=0001 | Actual=0001 | Cycles=8
+t=885000 | input=1000 | state=0001 | busy=0 | done=0 | converged=1
+t=890000 | input=1001 | state=0001 | busy=0 | done=0 | converged=1
+t=895000 | input=1001 | state=1001 | busy=1 | done=0 | converged=0
+t=905000 | input=1001 | state=0001 | busy=1 | done=0 | converged=0
+t=975000 | input=1001 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=1001 | Expected=0001 | Actual=0001 | Cycles=8
+t=985000 | input=1001 | state=0001 | busy=0 | done=0 | converged=1
+t=990000 | input=1010 | state=0001 | busy=0 | done=0 | converged=1
+t=995000 | input=1010 | state=1010 | busy=1 | done=0 | converged=0
+t=1015000 | input=1010 | state=1110 | busy=1 | done=0 | converged=0
+t=1075000 | input=1010 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=1010 | Expected=1110 | Actual=1110 | Cycles=8
+t=1085000 | input=1010 | state=1110 | busy=0 | done=0 | converged=1
+t=1090000 | input=1011 | state=1110 | busy=0 | done=0 | converged=1
+t=1095000 | input=1011 | state=1011 | busy=1 | done=0 | converged=0
+t=1105000 | input=1011 | state=0011 | busy=1 | done=0 | converged=0
+t=1125000 | input=1011 | state=0001 | busy=1 | done=0 | converged=0
+t=1175000 | input=1011 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=1011 | Expected=0001 | Actual=0001 | Cycles=8
+t=1185000 | input=1011 | state=0001 | busy=0 | done=0 | converged=1
+t=1190000 | input=1100 | state=0001 | busy=0 | done=0 | converged=1
+t=1195000 | input=1100 | state=1100 | busy=1 | done=0 | converged=0
+t=1225000 | input=1100 | state=1110 | busy=1 | done=0 | converged=0
+t=1275000 | input=1100 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=1100 | Expected=1110 | Actual=1110 | Cycles=8
+t=1285000 | input=1100 | state=1110 | busy=0 | done=0 | converged=1
+t=1290000 | input=1101 | state=1110 | busy=0 | done=0 | converged=1
+t=1295000 | input=1101 | state=1101 | busy=1 | done=0 | converged=0
+t=1305000 | input=1101 | state=0101 | busy=1 | done=0 | converged=0
+t=1315000 | input=1101 | state=0001 | busy=1 | done=0 | converged=0
+t=1375000 | input=1101 | state=0001 | busy=0 | done=1 | converged=1
+PASS | Input=1101 | Expected=0001 | Actual=0001 | Cycles=8
+t=1385000 | input=1101 | state=0001 | busy=0 | done=0 | converged=1
+t=1390000 | input=1110 | state=0001 | busy=0 | done=0 | converged=1
+t=1395000 | input=1110 | state=1110 | busy=1 | done=0 | converged=0
+t=1435000 | input=1110 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=1110 | Expected=1110 | Actual=1110 | Cycles=4
+t=1445000 | input=1110 | state=1110 | busy=0 | done=0 | converged=1
+t=1450000 | input=1111 | state=1110 | busy=0 | done=0 | converged=1
+t=1455000 | input=1111 | state=1111 | busy=1 | done=0 | converged=0
+t=1495000 | input=1111 | state=1110 | busy=1 | done=0 | converged=0
+t=1535000 | input=1111 | state=1110 | busy=0 | done=1 | converged=1
+PASS | Input=1111 | Expected=1110 | Actual=1110 | Cycles=8
+t=1545000 | input=1111 | state=1110 | busy=0 | done=0 | converged=1
+
+======================================
+       SIMULATION SUMMARY
+======================================
+Total tests : 16
+Passed      : 16
+Failed      : 0
+======================================
+ALL TESTS PASSED
+Simulation Complete!
+Hopfield_tb.sv:148: $finish called at 1546000 (1ps)
