@@ -2,7 +2,7 @@
 A Hopfield Network is a recurrent neural network that functions as an associative memory system. It stores patterns within a network of interconnected neurons and retrieves them by evolving an initial state toward a stable configuration.
 
 <p align="center">
-  <img src="images/waveform.png" width="1000"/>
+  <img src="images/waveform.png" width="1200"/>
   <br>
   <sub>Sequential neuron updates and convergence to a stable state.</sub>
 </p>
@@ -64,11 +64,9 @@ The following results were obtained after synthesis using the Sky130 HD standard
 
 > **Technology:** Sky130 HD
 
-| Metric                       |    Value |
-| ---------------------------- | -------  |
-| Cell Area (µm²)              | 817.0336 |
-| Estimated Fmax (MHz)         |     ~377 |
-| Total Power (µW)             |      250 |
+| Network | Neurons | Cell Area | Estimated Fmax | Total Power |
+|---------|--------|----------------|---------------------|-----------------|
+| Hopfield Network | 4 | 817.0336 µm² | ~377 MHz | 250 µW |
 
 ## 📜 License
 
