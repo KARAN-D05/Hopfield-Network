@@ -4,24 +4,47 @@ A parameterized digital implementation of a Hopfield Network using SystemVerilog
 
 The design uses a predefined symmetric weight matrix with zero diagonal entries. Each neuron is updated asynchronously, one neuron per clock cycle, using bipolar state interpretation: binary `1` represents `+1`, while binary `0` represents `-1`. The network terminates when a complete pass produces no state changes or when the maximum pass limit is reached.
 
-## Features
+## 🔢 Hebbian Weight Matrix
 
-* Parameterized neuron count and maximum update passes
-* Predefined symmetric weight matrix with zero diagonal
-* Bipolar neuron representation using binary states
-* Asynchronous neuron updates, one neuron per clock cycle
-* Weighted-input calculation and threshold-based state updates
-* Zero-input behavior that retains the current neuron state
-* Automatic convergence detection
-* Maximum-pass limit to prevent indefinite execution
-* Completion and status signals: `busy`, `done`, and `converged`
-* Testbench verification of all 16 initial states for the 4-neuron configuration
+The network uses the following weight matrix:
 
-<p align="center">
-  <img src="../images/synthesis.png" width="600"/>
-  <br>
-  <sub>Hopfield Network Synthesis</sub>
-</p>
+```text
+Hebbian Weight Matrix:
+
+   0    1    1   -1
+   1    0    1   -1
+   1    1    0   -1
+  -1   -1   -1    0
+```
+
+The matrix is symmetric, with zero diagonal entries to prevent self-connections.
+
+The weights support two stable configurations: a bipolar pattern and its inverse.
+
+### Stable Configurations
+
+**Stable State 1: `0001`**
+
+Bipolar representation:
+
+$$
+S_A = [-1,-1,-1,+1]
+$$
+
+**Stable State 2: `1110`**
+
+Bipolar representation:
+
+$$
+S_B = [+1,+1,+1,-1]
+$$
+
+The two patterns are inverses:
+
+$$
+S_B=-S_A
+$$
+
 
 ## Synthesis Results
 
