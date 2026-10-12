@@ -15,12 +15,12 @@ This directory contains the final GDSII layout, physical implementation files, t
 
 | File                                       | Description                       |
 | ------------------------------------------ | --------------------------------- |
-| [`Area.txt`](reports/Area.txt)             | Design area and utilization.      |
-| [`Cell_Usage.txt`](reports/Cell_Usage.txt) | Cell counts and area breakdown.   |
-| [`Timing.txt`](reports/Timing.txt)         | Static timing analysis results.   |
-| [`Power.txt`](reports/Power.txt)           | Estimated power consumption.      |
-| [`Skew.txt`](reports/Skew.txt)             | Clock skew and insertion latency. |
-| [`cap.txt`](reports/cap.txt)               | Capacitance and slew checks.      |
+| [`Area.txt`](Area.txt)             | Design area and utilization.      |
+| [`Cell_Usage.txt`](Cell_Usage.txt) | Cell counts and area breakdown.   |
+| [`Timing.txt`](Timing.txt)         | Static timing analysis results.   |
+| [`Power.txt`](Power.txt)           | Estimated power consumption.      |
+| [`Skew.txt`](Skew.txt)             | Clock skew and insertion latency. |
+| [`Cap.txt`](Cap.txt)               | Capacitance and slew checks.      |
 
 **Technology:** Sky130HD
 **Physical Design Tool:** OpenROAD
