@@ -185,9 +185,3 @@ The current test suite successfully recovered the expected stored pattern in all
 | Expected final pattern | `0100101010011000101001001` |
 
 These results demonstrate successful recall for the tested inputs. They do not establish that every possible 25-bit input will converge to the stored pattern.
-
-## Project Objective
-
-This project explores the implementation of associative memory using digital hardware. It connects the mathematical principles of Hopfield networks with sequential logic design, demonstrating how a network of weighted binary neurons can recover a stored pattern through iterative state updates.
-
-The focus is on neural-network behavior, Hebbian weight construction, associative recall, convergence, and RTL verification.
