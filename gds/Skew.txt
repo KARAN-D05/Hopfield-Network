@@ -2,5 +2,5 @@ Clock clock
    0.31 source latency _29364_/CLK ^
   -0.31 target latency _29374_/CLK ^
    0.00 CRPR
---------------
+ -------------
   -0.01 setup skew
