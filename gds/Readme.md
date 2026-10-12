@@ -13,12 +13,12 @@ Timing analysis was performed using a 25 ns clock period with 1 ns input and out
 ### Implementation Results
 
 | Metric                             |       Result |
-|  --------------------------------- | -----------  |
+| ---------------------------------- | -----------: |
 | Total Cell Area                    | 9,724.33 µm² |
 | Placement Utilization              |          82% |
 | Total Cell Count                   |        1,334 |
-| Critical Register-to-Register Path |     20.00 ns |
-| Estimated Maximum Frequency        |      ~50 MHz |
+| Critical Register-to-Register Path |    20.206 ns |
+| Estimated Maximum Frequency        |    ~49.5 MHz |
 | Worst Setup Slack                  |     +5.00 ns |
 | Worst Hold Slack                   |     +0.52 ns |
 | Setup Clock Skew                   |     -0.01 ns |
@@ -27,7 +27,7 @@ Timing analysis was performed using a 25 ns clock period with 1 ns input and out
 ### Cell Area Breakdown
 
 | Cell Category                   |     Count |             Area |
-|  ------------------------------ | --------  | ---------------  |
+| ------------------------------- | --------: | ---------------: |
 | Multi-Input Combinational Cells |     1,148 |     8,340.50 µm² |
 | Sequential Cells                |        38 |       952.16 µm² |
 | Timing Repair Buffers           |         8 |       145.14 µm² |
@@ -40,7 +40,7 @@ Timing analysis was performed using a 25 ns clock period with 1 ns input and out
 ### Power Breakdown
 
 | Component           | Estimated Power | Percentage |
-|  ------------------ | --------------  | ---------  |
+| ------------------- | --------------: | ---------: |
 | Combinational Logic |          397 µW |      78.8% |
 | Sequential Logic    |         78.3 µW |      15.5% |
 | Clock Network       |         28.4 µW |       5.6% |
