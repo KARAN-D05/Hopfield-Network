@@ -40,10 +40,11 @@ The Hopfield Network was taken through synthesis and physical implementation usi
 
 > Sky 130HD
 
-| Implementation Stage |    Cell Area | Cell Count | Critical Path | Estimated Fmax | Estimated Power |
-| -------------------- | -----------  | ---------  | ------------  | -------------  | --------------  |
-| Post-Synthesis       | 9,336.45 µm² |      1,213 |      20.02 ns |     ~49.95 MHz |          392 µW |
-| Post-P&R             | 9,724.33 µm² |      1,334 |     20.206 ns |      ~49.5 MHz |          504 µW |
+| Implementation Stage            |    Cell Area | Cell Count | Critical Path | Estimated Fmax | Estimated Power |
+| ------------------------------- | -----------  | ---------  | ------------  | -------------  | --------------  |
+| Post-Synthesis                  | 9,336.45 µm² |      1,213 |      20.02 ns |     ~49.95 MHz |          392 µW |
+| Post-P&R (Estimated Parasitics) | 9,724.33 µm² |      1,334 |     20.206 ns |      ~49.5 MHz |          504 µW |
+| Post-P&R (Extracted Parasitics) | 9,724.33 µm² |      1,334 |      19.47 ns |     ~51.36 MHz |          481 µW |
 
 **Detailed reports and implementation artifacts:**
 
