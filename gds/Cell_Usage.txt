@@ -1,4 +1,4 @@
-Cell type report:                       Count       Area
+ Cell type report:                       Count       Area
   Tap cell                                105     131.38
   Clock buffer                              5      37.54
   Timing Repair Buffer                      8     145.14
