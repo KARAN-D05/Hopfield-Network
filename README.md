@@ -34,6 +34,25 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
   <sub>A corrupted input pattern is recalled as the stored configuration through iterative neuron updates.</sub>
 </p>
 
+## 🔬 Physical Characterization
+
+The Hopfield Network was taken through synthesis and physical implementation using the Sky130HD standard-cell library. The following table summarizes the estimated metrics at each stage.
+
+> Sky 130HD
+
+| Metric                      | Post-Synthesis |     Post-P&R |
+| --------------------------- | -------------: | -----------: |
+| Cell Area                   |   9,336.45 µm² | 9,724.33 µm² |
+| Cell Count                  |          1,213 |        1,334 |
+| Critical Path Delay         |       20.02 ns |     20.00 ns |
+| Estimated Maximum Frequency |     ~49.95 MHz |      ~50 MHz |
+| Total Estimated Power       |        59.9 mW |       504 µW |
+
+**Detailed reports and implementation artifacts:**
+
+- 📊 [Post-Synthesis Metrics](metrics/)
+- 🏗️ [Post-Place-and-Route Reports and GDSII](gds/)
+
 ## ⚙️ Implementation
 
 - Hebbian Weight Matrix: A predefined symmetric weight matrix with zero diagonal entries.
