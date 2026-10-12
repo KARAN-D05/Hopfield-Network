@@ -1,6 +1,3 @@
-
-5. Printing statistics.
-
 === hopfield_network ===
 
    Number of wires:              28189
