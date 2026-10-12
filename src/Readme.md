@@ -168,11 +168,11 @@ A testbench applies multiple initial patterns and checks whether the network rea
 
 The verification suite includes:
 
-* Multiple corrupted input patterns.
-* Checks of the final recalled state.
-* Checks for convergence and completion.
-* A timeout to prevent indefinite simulation.
-* Gate-level simulation of the synthesized netlist.
+- Multiple corrupted input patterns.
+- Checks of the final recalled state.
+- Checks for convergence and completion.
+- A timeout to prevent indefinite simulation.
+- Gate-level simulation of the synthesized netlist.
 
 ### Verification Results
 
