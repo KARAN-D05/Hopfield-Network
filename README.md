@@ -4,6 +4,16 @@ A Hopfield network functions as an associative memory, recovering stored pattern
 
 Unlike conventional memory systems, which retrieve data using an explicit address, associative memory recalls information from the content of an input pattern. When presented with a sufficiently similar pattern, the network can recover the stored configuration through interactions between its interconnected neurons.
 
+## 🛠️ Tools & Technologies
+
+![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-RTL_Simulation-1E88E5?style=flat-square)
+![GTKWave](https://img.shields.io/badge/GTKWave-Waveform_Analysis-F57C00?style=flat-square)
+![Cocotb](https://img.shields.io/badge/Cocotb-Verification-795548?style=flat-square)
+![Yosys](https://img.shields.io/badge/Yosys-Logic_Synthesis-43A047?style=flat-square)
+![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
+![Sky130HD](https://img.shields.io/badge/Sky130HD-Standard_Cell_Library-455A64?style=flat-square)
+![KLayout](https://img.shields.io/badge/KLayout-GDSII_Export-6D4C41?style=flat-square)
+
 ## 🏗️ Physical Implementation
 The Hopfield Network was taken for physical implementation to evaluate its area, timing, and power characteristics beyond synthesis. The design was taken through floorplanning, placement, clock tree synthesis, and global and detailed routing using OpenROAD and the Sky130HD standard-cell library, culminating in GDSII layout generation.
 
