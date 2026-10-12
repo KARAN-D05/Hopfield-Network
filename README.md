@@ -34,12 +34,6 @@ The network stores a 5 × 5 binary pattern and attempts to recover it from an in
   <sub>A corrupted input pattern is recalled as the stored configuration through iterative neuron updates.</sub>
 </p>
 
-## 📚 Documentation
-
-- [Hopfield Network Fundamentals](Hopfield.md)
-- [Hebbian Matrix Generator](Hebbian.py) 
-- [Source Files](src) 
-
 ## ⚙️ Implementation
 
 - Hebbian Weight Matrix: A predefined symmetric weight matrix with zero diagonal entries.
@@ -62,6 +56,12 @@ The implementation has been tested through both RTL simulation and gate-level si
    <br>
   <sub>All 20 selected test inputs converged to the expected stored pattern.</sub>
 </p>
+
+## 📚 Documentation
+
+- [Hopfield Network Fundamentals](Hopfield.md)
+- [Hebbian Matrix Generator](Hebbian.py) 
+- [Source Files](src) 
 
 ## 📜 License
 
