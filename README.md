@@ -4,6 +4,35 @@ A Hopfield network functions as an associative memory, recovering stored pattern
 
 Unlike conventional memory systems, which retrieve data using an explicit address, associative memory recalls information from the content of an input pattern. When presented with a sufficiently similar pattern, the network can recover the stored configuration through interactions between its interconnected neurons.
 
+## 🏗️ Physical Implementation
+The Hopfield Network was taken for physical implementation to evaluate its area, timing, and power characteristics beyond synthesis. The design was taken through floorplanning, placement, clock tree synthesis, and global and detailed routing using OpenROAD and the Sky130HD standard-cell library, culminating in GDSII layout generation.
+
+<table align="center">
+  <tr>
+    <td align="center" style="padding-right: 50px;">
+      <img src="images/route.png" width="500"><br>
+         <sub></b> Hopfield Network Post-Route Physical Layout (OpenROAD)
+    </td>
+    <td align="center" style="padding-left: 50px;">
+      <img src="images/gds.png" width="500"><br>
+         <sub></b> Hopfield Network GDSII Layout (KLayout)
+    </td>
+  </tr>
+</table>
+
+<table align="center">
+  <tr>
+    <td align="center" style="padding-right: 50px;">
+      <img src="CLA/gds/images/cla_route.png" width="500"><br>
+         <sub></b> Carry-Lookahead Post-Route Physical Layout (OpenROAD)
+    </td>
+    <td align="center" style="padding-left: 50px;">
+      <img src="CLA/gds/images/cla_gds.png" width="500"><br>
+         <sub></b> Carry-Lookahead GDSII Layout (KLayout)
+    </td>
+  </tr>
+</table>
+
 ## 🧠 Associative Recall
 
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
