@@ -20,19 +20,6 @@ The Hopfield Network was taken for physical implementation to evaluate its area,
   </tr>
 </table>
 
-<table align="center">
-  <tr>
-    <td align="center" style="padding-right: 50px;">
-      <img src="CLA/gds/images/cla_route.png" width="500"><br>
-         <sub></b> Carry-Lookahead Post-Route Physical Layout (OpenROAD)
-    </td>
-    <td align="center" style="padding-left: 50px;">
-      <img src="CLA/gds/images/cla_gds.png" width="500"><br>
-         <sub></b> Carry-Lookahead GDSII Layout (KLayout)
-    </td>
-  </tr>
-</table>
-
 ## 🧠 Associative Recall
 
 The network stores a 5 × 5 binary pattern and attempts to recover it from an initially corrupted state.
