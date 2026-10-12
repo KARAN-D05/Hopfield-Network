@@ -15,7 +15,7 @@ module hopfield_network #(
     logic signed [7:0] weights [0:N-1][0:N-1];
 
     initial begin
-     $readmemh("weights.mem", weights);
+     $readmemh("Weights.mem", weights);
     end
 
     logic [N-1:0] state_reg;
