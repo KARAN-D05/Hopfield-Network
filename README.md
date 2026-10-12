@@ -6,11 +6,11 @@ Unlike conventional memory systems, which retrieve data using an explicit addres
 
 ## 🛠️ Tools & Technologies
 
-![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-RTL_Simulation-1E88E5?style=flat-square)
-![GTKWave](https://img.shields.io/badge/GTKWave-Waveform_Analysis-F57C00?style=flat-square)
-![Yosys](https://img.shields.io/badge/Yosys-Logic_Synthesis-43A047?style=flat-square)
+![Icarus Verilog](https://img.shields.io/badge/Icarus_Verilog-Simulation-1E88E5?style=flat-square)
+![GTKWave](https://img.shields.io/badge/GTKWave-Waveforms-F57C00?style=flat-square)
+![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
-![Sky130HD](https://img.shields.io/badge/Sky130HD-Standard_Cell_Library-455A64?style=flat-square)
+![Sky130HD](https://img.shields.io/badge/Sky130HD-Primary_Characterization-455A64?style=flat-square)
 
 ## 🏗️ Physical Implementation
 The Hopfield Network was taken for physical implementation to evaluate its area, timing, and power characteristics beyond synthesis. The design was taken through floorplanning, placement, clock tree synthesis, and global and detailed routing using OpenROAD and the Sky130HD standard-cell library, culminating in GDSII layout generation.
