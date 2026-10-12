@@ -40,13 +40,10 @@ The Hopfield Network was taken through synthesis and physical implementation usi
 
 > Sky 130HD
 
-| Metric                      | Post-Synthesis |     Post-P&R |
-| --------------------------- | -------------: | -----------: |
-| Cell Area                   |   9,336.45 µm² | 9,724.33 µm² |
-| Cell Count                  |          1,213 |        1,334 |
-| Critical Path Delay         |       20.02 ns |     20.00 ns |
-| Estimated Maximum Frequency |     ~49.95 MHz |      ~50 MHz |
-| Total Estimated Power       |        59.9 mW |       504 µW |
+| Implementation Stage |    Cell Area | Cell Count | Critical Path | Estimated Fmax | Estimated Power |
+| -------------------- | -----------  | ---------  | ------------  | -------------  | --------------  |
+| Post-Synthesis       | 9,336.45 µm² |      1,213 |      20.02 ns |     ~49.95 MHz |         59.9 mW |
+| Post-P&R             | 9,724.33 µm² |      1,334 |      20.00 ns |        ~50 MHz |          504 µW |
 
 **Detailed reports and implementation artifacts:**
 
@@ -78,9 +75,11 @@ The implementation has been tested through both RTL simulation and gate-level si
 
 ## 📚 Documentation
 
-- [Hopfield Network Fundamentals](Hopfield.md)
-- [Hebbian Matrix Generator](Hebbian.py) 
-- [Source Files](src) 
+* [Hopfield Network Fundamentals](Hopfield.md)
+* [Hebbian Matrix Generator](Hebbian.py)
+* [RTL Source Files](src)
+* [Post-Synthesis Metrics](metrics)
+* [Physical Implementation & GDSII](gds)
 
 ## 📜 License
 
