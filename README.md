@@ -54,7 +54,7 @@ The Hopfield Network was taken through synthesis and physical implementation usi
 | Post-P&R (Estimated Parasitics) | 9,724.33 µm² |      1,334 |     20.206 ns |      ~49.5 MHz |          504 µW |
 | Post-P&R (Extracted Parasitics) | 9,724.33 µm² |      1,334 |      19.47 ns |     ~51.36 MHz |          481 µW |
 
-> **Note:** Estimated parasitics approximate interconnect resistance and capacitance, whereas extracted parasitics derive these values from the detailed-routed layout for more physically representative timing and power analysis. Extracted results are engineering estimates, not signoff results.
+> **Note:** Estimated parasitics approximate interconnect resistance and capacitance, whereas extracted parasitics derive these values from the detailed-routed layout for more physically representative timing and power analysis.
 
 **Detailed reports and implementation artifacts:**
 
