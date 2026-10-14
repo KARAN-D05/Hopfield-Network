@@ -95,4 +95,4 @@ The implementation has been tested through both RTL simulation and gate-level si
 ## 📜 License
 
 - Source code and HDL files are licensed under the MIT License.
-- Documentation, diagrams, images, and PDFs are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
+- Documentation, diagrams, images, and PDFs are licensed under the Creative Commons Attribution 4.0 (CC BY 4.0).
